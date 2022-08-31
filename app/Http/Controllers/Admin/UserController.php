@@ -82,6 +82,19 @@ class UserController extends Controller
         $user->removeRole($role);
         return Redirect::back();
     }
+    public function assignPermission(Request $request, $username)
+    {
+        $user = User::where('username', $username)->firstOrFail();
+        $user->givePermissionTo($request->permission);
+        return Redirect::back();
+    }
+
+    public function revokePermission($username, $role)
+    {
+        $user = User::where('username', $username)->firstOrFail();
+        $user->removeRole($role);
+        return Redirect::back();
+    }
 
     public function delete($username)
     {

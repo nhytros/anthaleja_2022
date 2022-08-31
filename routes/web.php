@@ -33,13 +33,7 @@ use App\Http\Controllers\Litted\PostCommentController;
 */
 
 Route::get('/test', function () {
-    $users = \App\Models\User::all();
-    foreach ($users as $u) {
-        $c = $u->character;
-        $un = $c->username ?? 'None';
-        dump($un);
-    }
-    die;
+    // 
 });
 
 Route::group(['middleware' => ['guest']], function () {

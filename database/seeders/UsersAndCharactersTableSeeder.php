@@ -11,13 +11,15 @@ class UsersAndCharactersTableSeeder extends Seeder
     public function run()
     {
         $faker = Factory::create();
-        $user = User::create([
+        $admin = User::create([
             'username' => 'admin',
             'email' => 'admin@anthaleja.ovh',
             'password' => bcrypt('password', ['rounds' => 12]),
             'status' => true,
         ]);
-        $user->assignRole('admin');
+        $admin->assignRole('admin');
+        $admin->givePermissionTo('user');
+        $admin->givePermissionTo('character');
 
         $gov = User::create([
             'username' => 'jjnhytros',
