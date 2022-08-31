@@ -33,8 +33,13 @@ use App\Http\Controllers\Litted\PostCommentController;
 */
 
 Route::get('/test', function () {
-    $md = new Markdown();
-    dd($md);
+    $users = \App\Models\User::all();
+    foreach ($users as $u) {
+        $c = $u->character;
+        $un = $c->username ?? 'None';
+        dump($un);
+    }
+    die;
 });
 
 Route::group(['middleware' => ['guest']], function () {
@@ -141,16 +146,21 @@ Route::middleware(['auth', 'role:admin'])->name('admin.')->prefix('admin')
             Route::get('permission/{name}/restore', [PermissionController::class, 'restore'])->name('permission.restore');
             Route::get('permission/{name}/destroy', [PermissionController::class, 'destroy'])->name('permission.destroy');
 
-            Route::get('users/status', [UserController::class, 'userOnlineStatus'])->name('admin.users.status');
+            // Users
             Route::get('users', [UserController::class, 'index'])->name('users');
-            Route::get('users/create', [UserController::class, 'create'])->name('admin.users.create');
-            Route::post('users/store', [UserController::class, 'store'])->name('admin.users.store');
-            Route::get('users/{id}/show', [UserController::class, 'show'])->name('admin.users.show');
-            Route::get('users/edit', [UserController::class, 'edit'])->name('admin.users.edit');
-            Route::post('users/{id}/update', [UserController::class, 'update'])->name('admin.users.update');
-            Route::get('users/{id}/delete', [UserController::class, 'delete'])->name('admin.users.delete');
-            Route::get('users/{id}/restore', [UserController::class, 'restore'])->name('admin.users.restore');
-            Route::get('users/{id}/destroy', [UserController::class, 'destroy'])->name('admin.users.destroy');
+            Route::get('users/status', [UserController::class, 'userOnlineStatus'])->name('users.status');
+            Route::get('user/create', [UserController::class, 'create'])->name('user.create');
+            Route::post('user/store', [UserController::class, 'store'])->name('user.store');
+            Route::get('user/{username}/show', [UserController::class, 'show'])->name('user.show');
+            Route::get('user/{username}/edit', [UserController::class, 'edit'])->name('user.edit');
+            Route::post('user/{username}/update', [UserController::class, 'update'])->name('user.update');
+            Route::get('user/{username}/delete', [UserController::class, 'delete'])->name('user.delete');
+            Route::post('user/{username}/assignRole', [UserController::class, 'assignRole'])->name('user.role.assign');
+            Route::get('user/{username}/revoke/{role}', [UserController::class, 'revokeRole'])->name('user.role.revoke');
+            Route::post('user/{username}/assignPermission', [UserController::class, 'assignPermission'])->name('user.permission.assign');
+            Route::get('user/{username}/revoke/{permission}', [UserController::class, 'revokePermission'])->name('user.permission.revoke');
+            Route::get('user/{username}/restore', [UserController::class, 'restore'])->name('user.restore');
+            Route::get('user/{username}/destroy', [UserController::class, 'destroy'])->name('user.destroy');
         }
     );
 

@@ -40,8 +40,6 @@
                             <a href="{{ route('frontier.login') }}" class="btn btn-secondary">Login</a>
                             <input type="submit" class="btn btn-primary" value="Register">
                         </div>
-                        {{-- </div> --}}
-
                     </div>
                 </div>
             </div>

@@ -9,11 +9,12 @@ use Illuminate\Notifications\Notifiable;
 // use Laravel\Jetstream\HasProfilePhoto;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable, HasRoles;
+    use HasApiTokens, HasFactory, Notifiable, HasRoles, SoftDeletes;
     // use HasProfilePhoto;
     // use TwoFactorAuthenticatable;
 
@@ -22,11 +23,7 @@ class User extends Authenticatable
      *
      * @var string[]
      */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-    ];
+    protected $fillable = ['username', 'email', 'password'];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -34,8 +31,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password',
-        'remember_token',
+        'password', 'remember_token',
         // 'two_factor_recovery_codes',
         // 'two_factor_secret',
     ];
@@ -58,18 +54,8 @@ class User extends Authenticatable
         // 'profile_photo_url',
     ];
 
-    public function getFilamentAvatarUrl(): ?string
+    public function character()
     {
-        return $this->avatar_url;
-    }
-
-    public function getFilamentName(): string
-    {
-        return "{$this->username}";
-    }
-
-    public function characters()
-    {
-        return $this->hasMany(Character::class, 'user_id', 'id');
+        return $this->hasOne(Character::class);
     }
 }

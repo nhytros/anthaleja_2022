@@ -3,18 +3,22 @@
 namespace App\Http\Controllers\Admin;
 
 use Carbon\Carbon;
-use App\Models\User;
+use App\Models\{User, Role, Permission};
 use Illuminate\Http\Request;
-use Spatie\Permission\Models\Role;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Cache;
 use App\Http\Requests\UserStoreRequest;
+use Illuminate\Support\Facades\Redirect;
 
 class UserController extends Controller
 {
     public function index()
     {
-        return view('admin.users.index', ['title' => trans('admin.users.manage_users')]);
+        $users = User::with('character')->whereNotIn('username', ['admin'])->withTrashed()->get();
+        return view('admin.users.index', [
+            'title' => trans('admin.users.manage_users'),
+            'users' => $users,
+        ]);
     }
 
     public function create()
@@ -42,13 +46,17 @@ class UserController extends Controller
         ]);
     }
 
-    public function edit($id)
+    public function edit($username)
     {
-        $user = User::withTrashed()->findOrFail($id);
+        $user = User::withTrashed()->where('username', $username)->firstOrFail();
+        $roles = Role::all();
+        $permissions = Permission::all();
         return view('admin.users.edit', [
             'title' => trans('admin.users.edit_user'),
             'user' => $user,
-            'userRole' => $user->roles->pluck('name')->toArray(),
+            'roles' => $roles,
+            'permissions' => $permissions,
+            // 'userRole' => $user->roles->pluck('name')->toArray(),
             // 'roles' => Role::latest()->get(),
         ]);
     }
@@ -61,23 +69,37 @@ class UserController extends Controller
         return redirect('admin/dashboard')->withSuccess(trans('admin.user.updated_ok'));
     }
 
-    public function delete($id)
+    public function assignRole(Request $request, $username)
     {
-        $user = User::withTrashed()->findOrFail($id);
+        $user = User::where('username', $username)->firstOrFail();
+        $user->assignRole($request->role);
+        return Redirect::back();
+    }
+
+    public function revokeRole($username, $role)
+    {
+        $user = User::where('username', $username)->firstOrFail();
+        $user->removeRole($role);
+        return Redirect::back();
+    }
+
+    public function delete($username)
+    {
+        $user = User::withTrashed()->where('username', $username);
         $user->delete();
         return redirect()->back()->with('info', trans('admin.users.deleted'));
     }
 
-    public function restore($id)
+    public function restore($username)
     {
-        $user = User::withTrashed()->findOrFail($id);
+        $user = User::withTrashed()->where('username', $username);
         $user->restore();
         return redirect()->back()->with('info', trans('admin.users.restored'));
     }
 
-    public function destroy($id)
+    public function destroy($username)
     {
-        $user = User::withTrashed()->findOrFail($id);
+        $user = User::withTrashed()->where('username', $username);
         $user->forceDelete();
         return redirect()->back()->with('info', trans('admin.users.destroyed'));
     }
