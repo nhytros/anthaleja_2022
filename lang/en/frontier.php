@@ -1,0 +1,23 @@
+<?php
+return [
+    'enter_city' => 'Enter the city',
+    'enter_city_ko' => 'You have entered invalid credentials. Please try again.',
+    'enter_city_ok' => 'Welcome to Anthal.',
+    'error.username.not_present' => 'Username not registered.',
+    'error.password.wrong' => 'Wrong password.',
+    'leave_city' => 'Leave the city',
+    'leave_city_ok' => 'You leave the city. Hope to see you soon.',
+    'password.change' => 'Change password',
+    'password.confirm_new' => 'Confirm new password',
+    'password.current' => 'Current password',
+    'password.match' => 'The :attribute is match with old password',
+    'password.new' => 'New password',
+    'password.save' => 'Save password',
+    'password.updated_ok' => 'Your password has been updated',
+    'register_office' => 'Register Office',
+    'register_ok' => 'Registration successfully. You can now enter the city.',
+    'remember_me' => 'Remember me',
+    'title' => 'Welcome to the Frontier',
+    'online' => ' is in city.',
+    'offline' => ' is not in city. Last access: ',
+];

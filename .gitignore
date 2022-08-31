@@ -1,0 +1,8 @@
+/.env
+/tailwind.config.js
+/vendor
+/vite.config.js
+node_modules/*
+public/assets/css/_variables.scss
+lang/ath.php
+lang/it.php
