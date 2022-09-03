@@ -21,10 +21,10 @@ class School_Levels extends Seeder
         SchoolLevel::create(['name' => 'Preparatory Grade 1', 'description' => 'from 4 to 5 years']);
         SchoolLevel::create(['name' => 'Preparatory Grade 2', 'description' => 'from 5 to 6 years']);
         SchoolLevel::create(['name' => 'Elementary Grade 1', 'description' => '6 years born >1/12 < 24/18']);
-        SchoolLevel::create(['name' => 'Elementary Grade 2', 'description' => '7 years;
-        SchoolLevel::create(['name' => 'Elementary Grade 3', 'description' => '8 years;
-        SchoolLevel::create(['name' => 'Elementary Grade 4', 'description' => '9 years;
-        SchoolLevel::create(['name' => 'Elementary Grade 5', 'description' => '10 years;
+        SchoolLevel::create(['name' => 'Elementary Grade 2', 'description' => '7 years']);
+        SchoolLevel::create(['name' => 'Elementary Grade 3', 'description' => '8 years']);
+        SchoolLevel::create(['name' => 'Elementary Grade 4', 'description' => '9 years']);
+        SchoolLevel::create(['name' => 'Elementary Grade 5', 'description' => '10 years']);
         SchoolLevel::create(['name' => 'Elementary', 'description' => '6 years born >1/12 < 24/18']);
         SchoolLevel::create(['name' => 'Junior School', 'description' => '11-13 years']);
         SchoolLevel::create(['name' => 'High School', 'description' => '14-16 years']);
