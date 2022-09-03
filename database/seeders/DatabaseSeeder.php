@@ -14,20 +14,22 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
-            RolesAndPermissionsTableSeeder::class,
-            UsersAndCharactersTableSeeder::class,
-            // ItemsTableSeeder::class,
-            // WikisTableSeeder::class,
+            // Users, Characters, Roles and Permissions
+            Roles_and_Permissions::class,
+            Users_and_Characters::class,
 
             // Shop Seeders
-            ShopsTableSeeder::class,
-            ShopSectionsTableSeeder::class,
-            ShopCategoriesTableSeeder::class,
-            ShopBrandsTableSeeder::class,
-            ShopProductsTableSeeder::class,
-            ProductAttributesTableSeeder::class,
-            ShopBannersTableSeeder::class,
+            Shops::class,
+            Shop_Banners::class,
+            Shop_Sections::class,
+            Shop_Categories::class,
+            Shop_Brands::class,
+            Shop_Products::class,
+            Shop_Product_Attributes::class,
+
+            // Wiki::class,
             // LittedSeeders::class,
+
         ]);
     }
 }

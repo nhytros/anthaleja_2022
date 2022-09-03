@@ -104,4 +104,11 @@ return [
         'c_prefix' => 'ld/',
         'u_prefix' => 'u/',
     ],
+    'school' => [
+        'status' => [
+            'inactive' => 0,
+            'active' => 1,
+            'archived' => 2,
+        ],
+    ],
 ];

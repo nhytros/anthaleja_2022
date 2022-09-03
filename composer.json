@@ -17,7 +17,6 @@
         "laravel/jetstream": "^2.11",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
-        "owenvoke/blade-fontawesome": "^2.0",
         "pusher/pusher-php-server": "^7.0",
         "spatie/laravel-permission": "^5.5"
     },

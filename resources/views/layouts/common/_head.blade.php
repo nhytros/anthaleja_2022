@@ -7,6 +7,7 @@
     <title>{{ $title ?? env('APP_NAME') }}</title>
 
     <link href="{{ asset('assets/css/ath-bs5.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/css/fontawesome.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/custom.css') }}" rel="stylesheet">
     @role('admin')
         <link href="{{ asset('assets/css/admin.css') }}" rel="stylesheet">
@@ -15,6 +16,7 @@
 
     <script src="{{ asset('assets/js/jquery-3.6.0.min.js') }}"></script>
     <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('assets/js/fontawesome.min.js') }}"></script>
     @yield('js')
 
     <!-- Favicons -->

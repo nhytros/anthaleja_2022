@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\Shop\{Shop, Product};
 use App\Models\Chat\Conversation;
 use App\Models\Litted\Post;
+use App\Models\School\{Course, Teacher, Student};
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\{Model, SoftDeletes};
@@ -47,6 +48,21 @@ class Character extends Model
     {
         return $this->belongsToMany(Product::class, 'character_product')
             ->withPivot('quantity');
+    }
+
+    public function course()
+    {
+        return $this->belongsToMany(Course::class);
+    }
+
+    public function student()
+    {
+        return $this->hasOne(Student::class);
+    }
+
+    public function teacher()
+    {
+        return $this->hasOne(Teacher::class);
     }
 
     public function posts()

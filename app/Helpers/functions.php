@@ -1,4 +1,7 @@
 <?php
+
+use Illuminate\Support\Facades\Request;
+
 define('PI', 3.14159265358979323846);
 define('RADEG', 180 / PI);
 define('DEGRAD', PI / 180);
@@ -139,4 +142,14 @@ function gravatar($email, $size, $set = 'robohash')
     $hash = md5(strtolower($email));
     $url = "https://www.gravatar.com/avatar/{$hash}?r=g&d={$set}&s={$size}";
     return '<img src="' . $url . '" />';
+}
+
+function getIcon($group, $icon, $extra = [])
+{
+    return '<i class="' . $group . ' fa-' . $icon . '"></i>';
+}
+
+function getActivePage($page)
+{
+    return Request::is($page) ? ' active' : '';
 }

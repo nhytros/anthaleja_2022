@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('username', 96);
             $table->string('gender', 1);
             $table->unsignedTinyInteger('height')->nullable();
+            $table->date('date_of_birth')->nullable();
             $table->unsignedInteger('thirst')->nullable()->default(0);
             $table->unsignedInteger('hunger')->nullable()->default(0);
             $table->unsignedInteger('energy')->nullable()->default(100);

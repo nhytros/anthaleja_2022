@@ -1,25 +1,24 @@
 <?php
 
+use App\Models\User;
 use App\Helpers\Astro;
 use App\Helpers\ATHDateTime;
 use App\Helpers\ATHDateInterval;
 use App\Helpers\Markdown\Markdown;
 use App\Helpers\ATHDateTimeInterval;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\BankController;
-use App\Http\Controllers\NewsController;
-use App\Http\Controllers\NatterController;
-use App\Http\Controllers\FrontierController;
 use App\Http\Controllers\Wiki\WikiController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Litted\PostController;
 use App\Http\Controllers\Market\MarketController;
+use App\Http\Controllers\School\CourseController;
+use App\Http\Controllers\School\StudentController;
+use App\Http\Controllers\School\TeacherController;
+use Illuminate\Support\Facades\{Auth, Route, Session};
 use App\Http\Controllers\Admin\Roles\{RoleController, PermissionController};
-use App\Http\Controllers\Litted\CommunityController;
-use App\Http\Controllers\Litted\PostCommentController;
+use App\Http\Controllers\Litted\{CommunityController, PostCommentController};
+use App\Http\Controllers\{NewsController, NatterController, FrontierController};
 
 /*
 |--------------------------------------------------------------------------
@@ -158,6 +157,45 @@ Route::middleware(['auth', 'role:admin'])->name('admin.')->prefix('admin')
         }
     );
 
+Route::middleware(['auth', 'permission:course.show'])->name('admin.')->prefix('admin')
+    ->group(
+        function () {
+
+            // School
+            // -- Courses
+            Route::get('school/courses', [CourseController::class, 'index'])->name('school.courses');
+            Route::get('school/course/create', [CourseController::class, 'create'])->name('school.course.create');
+            Route::post('school/course/store', [CourseController::class, 'store'])->name('school.course.store');
+            Route::get('school/course/{name}/edit', [CourseController::class, 'edit'])->name('school.course.edit');
+            Route::post('school/course/store', [CourseController::class, 'store'])->name('school.course.store');
+            Route::get('school/course/{name}', [CourseController::class, 'show'])->name('school.course.show');
+            Route::get('school/course/{name}/delete', [CourseController::class, 'delete'])->name('school.course.delete');
+            Route::get('school/course/{name}/restore', [CourseController::class, 'restore'])->name('school.course.restore');
+            Route::get('school/course/{name}/destroy', [CourseController::class, 'destroy'])->name('school.course.destroy');
+
+            // -- Teachers
+            Route::get('school/teachers', [TeacherController::class, 'index'])->name('school.teachers');
+            Route::get('school/teacher/add', [TeacherController::class, 'create'])->name('school.teacher.add');
+            Route::post('school/teacher/store', [TeacherController::class, 'store'])->name('school.teacher.store');
+            Route::get('school/teacher/{id}/show', [TeacherController::class, 'show'])->name('school.teacher.show');
+            Route::get('school/teacher/{id}/edit', [TeacherController::class, 'edit'])->name('school.teacher.edit');
+            Route::post('school/teacher/{id}/update', [TeacherController::class, 'update'])->name('school.teacher.update');
+            Route::get('school/teacher/{id}/delete', [TeacherController::class, 'delete'])->name('school.teacher.delete');
+            Route::get('school/teacher/{id}/restore', [TeacherController::class, 'restore'])->name('school.teacher.restore');
+            Route::get('school/teacher/{id}/destroy', [TeacherController::class, 'destroy'])->name('school.teacher.destroy');
+
+            // -- Students
+            Route::get('school/students', [StudentController::class, 'index'])->name('school.students');
+            Route::get('school/student/add', [StudentController::class, 'create'])->name('school.student.add');
+            Route::post('school/student/store', [StudentController::class, 'store'])->name('school.student.store');
+            Route::get('school/student/{id}/show', [StudentController::class, 'show'])->name('school.student.show');
+            Route::get('school/student/{id}/edit', [StudentController::class, 'edit'])->name('school.student.edit');
+            Route::post('school/student/{id}/update', [StudentController::class, 'update'])->name('school.student.update');
+            Route::get('school/student/{id}/delete', [StudentController::class, 'delete'])->name('school.student.delete');
+            Route::get('school/student/{id}/restore', [StudentController::class, 'restore'])->name('school.student.restore');
+            Route::get('school/student/{id}/destroy', [StudentController::class, 'destroy'])->name('school.student.destroy');
+        }
+    );
 //         Route::group(
 //             ['middleware' => ['auth', 'vendor']],
 //             function () {

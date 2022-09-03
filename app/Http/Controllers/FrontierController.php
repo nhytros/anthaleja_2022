@@ -21,6 +21,7 @@ class FrontierController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except(['logout', 'password']);
+        $this->redirectTo = url()->previous();
     }
 
 
