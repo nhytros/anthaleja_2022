@@ -7,16 +7,12 @@
                     <div class="h4 card-header text-center">{{ $title }}</div>
                     <div class="card-body">
                         <div class="input-group mb-2">
-                            <span class="input-group-text">
-                                <x-fas-user />
-                            </span>
+                            <span class="input-group-text">{!! getIcon('fas', 'user') !!}</span>
                             <input type="text" class="form-control" name="username" placeholder="Username"
                                 value="{{ old('username') }}" autofocus>
                         </div>
                         <div class="input-group mb-2">
-                            <span class="input-group-text">
-                                <x-fas-lock />
-                            </span>
+                            <span class="input-group-text">{!! getIcon('fas', 'lock') !!}</span>
                             <input type="password" name="password" class="form-control" placeholder="Password">
                         </div>
                         <div class="form-check">

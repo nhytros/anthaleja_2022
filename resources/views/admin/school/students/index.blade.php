@@ -47,36 +47,7 @@
                                             </td>
                                             <td>{{ $student->roll_no }}</td>
                                             <td>{{ $student->standard }}</td>
-                                            <td>
-                                                <div class="btn-group" role="group" aria-label="Action Buttons">
-                                                    @if ($user->can('student.edit'))
-                                                        <a href="{{ route('admin.school.student.edit', $student->id) }}"
-                                                            class="btn btn-primary btn-sm">
-                                                            <x-fas-edit />
-                                                        </a>
-                                                    @endif
-                                                    @if ($user->can('student.delete'))
-                                                        <a href="{{ route('admin.school.student.delete', $student->id) }}"
-                                                            class="btn btn-warning btn-sm">
-                                                            <x-fas-trash />
-                                                        </a>
-                                                    @endif
-                                                    @if ($user->can('student.restore'))
-                                                        @if ($student->trashed())
-                                                            <a href="{{ route('admin.school.student.restore', $student->id) }}"
-                                                                class="btn btn-orange btn-sm">
-                                                                <x-fas-undo />
-                                                            </a>
-                                                        @endif
-                                                    @endif
-                                                    @if ($user->can('student.destroy'))
-                                                        <a href="{{ route('admin.school.student.destroy', $student->id) }}"
-                                                            class="btn btn-danger btn-sm">
-                                                            <x-fas-times />
-                                                        </a>
-                                                    @endif
-                                                </div>
-                                            </td>
+                                            <td>{!! dred($student, 'id', 'school.student', 'student', 1, 1, 1, 1) !!}</td>
                                         </tr>
                                     @endforeach
                                 </table>

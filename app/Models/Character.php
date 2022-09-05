@@ -122,4 +122,14 @@ class Character extends Model
             ]);
         }
     }
+
+    public function scopeGetActiveCharacterRoleAsTeacher($query, $uid)
+    {
+        // $user=Character::where('user_id',$uid)->first();
+        // $role=$user->hasRole('teacher');
+        // return $query->where('status',1)
+        //     ->where('u')
+
+        // get('id',)
+    }
 }

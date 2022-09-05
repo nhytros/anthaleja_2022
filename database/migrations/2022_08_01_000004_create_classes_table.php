@@ -13,13 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('school_teachers', function (Blueprint $table) {
+        Schema::create('school_classes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('character_id')->constrained('characters')->cascadeOnDelete();
-            $table->string('roll_no');
-            $table->string('address')->nullable();
-            $table->tinyInteger('standard');
-            $table->string('avatar')->nullable();
+            $table->string('name');
+            $table->string('code');
+            $table->foreignId('grade_id')->constrained('school_grades');
+            $table->text('description');
+            // Status: 0=Disabled, 1=Enabled, 2=Archived
+            $table->tinyInteger('status')->nullable()->default(1);
             $table->timestamps();
             $table->softDeletes();
         });
@@ -32,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('teachers');
+        Schema::dropIfExists('school_classes');
     }
 };

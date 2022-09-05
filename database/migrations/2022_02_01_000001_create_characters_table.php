@@ -25,13 +25,14 @@ return new class extends Migration
             $table->unsignedInteger('thirst')->nullable()->default(0);
             $table->unsignedInteger('hunger')->nullable()->default(0);
             $table->unsignedInteger('energy')->nullable()->default(100);
-            $table->boolean('status')->nullable()->default(true);
             $table->string('bank_account', 12);
             $table->decimal('cash', 64, 2)->nullable()->default(0);
             $table->decimal('bank_amount', 64, 2)->nullable()->default(500);
             $table->unsignedInteger('metals')->nullable()->default(0);
             $table->boolean('has_phone')->nullable()->default(true);
             $table->string('phone_no', 8)->nullable();
+            // Status: 0=Disabled, 1=Enabled, 2=Archived
+            $table->tinyInteger('status')->nullable()->default(1);
             $table->timestamps();
             $table->softDeletes();
         });

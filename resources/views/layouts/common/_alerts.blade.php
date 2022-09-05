@@ -3,7 +3,7 @@
         <h4 class="alert-heading">{{ trans('global.success') }}</h4>
         <div>
             <p>
-                <x-fas-check-circle class="me-2" />{{ session('success') }}
+                {!! getIcon('fas', 'check-circle', ['me-2']) !!}{{ session('success') }}
             </p>
         </div>
     </div>
@@ -14,7 +14,7 @@
         <h4 class="alert-heading">{{ trans('global.error') }}</h4>
         <div>
             <p>
-                <x-fas-exclamation-triangle class="me-2" />{{ session('danger') }}
+                {!! getIcon('fas', 'exclamation-triangle', ['me-2']) !!}{{ session('danger') }}
             </p>
         </div>
     </div>
@@ -25,7 +25,7 @@
         <h4 class="alert-heading">{{ trans('global.warning') }}</h4>=
         <div>
             <p>
-                <x-fas-exclamation-circle class="me-2" />{{ session('warning') }}
+                {!! getIcon('fas', 'exclamation-circle', ['me-2']) !!}{{ session('warning') }}
             </p>
         </div>
     </div>
@@ -36,7 +36,7 @@
         <h4 class="alert-heading">{{ trans('global.info') }}</h4>
         <div>
             <p>
-                <x-fas-info-circle class="me-2" />{{ session('info') }}
+                {!! getIcon('fas', 'info-circle', ['me-2']) !!}{{ session('info') }}
             </p>
         </div>
     </div>
@@ -46,7 +46,7 @@
     <div class="alert alert-primary alert-dismissible fade show" role="alert">
         <div>
             <p>
-                <x-fas-info class="me-2" />{{ session('primary') }}
+                {!! getIcon('fas', 'info', ['me-2']) !!}{{ session('primary') }}
             </p>
         </div>
     </div>
@@ -56,7 +56,7 @@
     <div class="alert alert-secondary alert-dismissible fade show" role="alert">
         <div>
             <p>
-                <x-fas-info class="me-2" />{{ session('secondary') }}
+                {!! getIcon('fas', 'info', ['me-2']) !!}{{ session('secondary') }}
             </p>
         </div>
     </div>
@@ -66,7 +66,7 @@
     <div class="alert alert-light alert-dismissible fade show" role="alert">
         <div>
             <p>
-                <x-fas-info class="me-2" />{{ session('light') }}
+                {!! getIcon('fas', 'info', ['me-2']) !!}{{ session('light') }}
             </p>
         </div>
     </div>
@@ -76,7 +76,7 @@
     <div class="alert alert-dark alert-dismissible fade show" role="alert">
         <div>
             <p>
-                <x-fas-info class="me-2" />{{ session('dark') }}
+                {!! getIcon('fas', 'info', ['me-2']) !!}{{ session('dark') }}
             </p>
         </div>
     </div>
@@ -86,7 +86,7 @@
     <div class="alert alert-pink alert-dismissible fade show" role="alert">
         <div>
             <p>
-                <x-fas-info class="me-2" />{{ session('pink') }}
+                {!! getIcon('fas', 'info', ['me-2']) !!}{{ session('pink') }}
             </p>
         </div>
     </div>
@@ -96,7 +96,7 @@
     <div class="alert alert-purple alert-dismissible fade show" role="alert">
         <div>
             <p>
-                <x-fas-info class="me-2" />{{ session('purple') }}
+                {!! getIcon('fas', 'info', ['me-2']) !!}{{ session('purple') }}
             </p>
         </div>
     </div>
@@ -106,7 +106,7 @@
     <div class="alert alert-teal alert-dismissible fade show" role="alert">
         <div>
             <p>
-                <x-fas-info class="me-2" />{{ session('teal') }}
+                {!! getIcon('fas', 'info', ['me-2']) !!}{{ session('teal') }}
             </p>
         </div>
     </div>
@@ -116,7 +116,7 @@
     <div class="alert alert-indigo alert-dismissible fade show" role="alert">
         <div>
             <p>
-                <x-fas-info class="me-2" />{{ session('indigo') }}
+                {!! getIcon('fas', 'info', ['me-2']) !!}{{ session('indigo') }}
             </p>
         </div>
     </div>
@@ -126,7 +126,7 @@
     <div class="alert alert-orange alert-dismissible fade show" role="alert">
         <div>
             <p>
-                <x-fas-info class="me-2" />{{ session('orange') }}
+                {!! getIcon('fas', 'info', ['me-2']) !!}{{ session('orange') }}
             </p>
         </div>
     </div>

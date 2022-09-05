@@ -121,7 +121,7 @@ function toAthel($amount): string|array
             $div = $val;
 
             break;
-            // if ($amount < 1e6) {
+            // if ($amount <div 1e6) {
             //     $decs = 3;
             //     $div = 1;
             // }
@@ -144,12 +144,61 @@ function gravatar($email, $size, $set = 'robohash')
     return '<img src="' . $url . '" />';
 }
 
-function getIcon($group, $icon, $extra = [])
+function getIcon($group, $icon, $extras = [])
 {
-    return '<i class="' . $group . ' fa-' . $icon . '"></i>';
+    $addictions = '';
+    if ($extras) {
+        foreach ($extras as $extra) {
+            $addictions .= ' ' . $extra;
+        }
+    }
+    $output = '<i class="' . $group . ' fa-' . $icon . $addictions . '">' . '</i>';
+    return $output;
 }
 
 function getActivePage($page)
 {
     return Request::is($page) ? ' active' : '';
+}
+
+function required_field($label)
+{
+    return $label . ' <span class="text-danger">*</span>';
+}
+
+function dred($key, $field, $model, $permission_group, $edit = true, $delete = true, $restore = true, $destroy = true)
+{
+    $user = auth()->user();
+    $output = '';
+    $output .= '<div class="btn-group" role="group" aria-label="Action Buttons">';
+    if ($edit && $user->can($permission_group . '.edit')) {
+        $output .= '<a href="' . route('admin.' . $model . '.edit', $key->$field) . '"';
+        $output .= 'class="btn btn-primary btn-sm">';
+        $output .= getIcon('fas', 'edit');
+        $output .= '</a>';
+    }
+    if ($delete && $user->can($permission_group . '.delete')) {
+        $output .= '<a href="' . route('admin.' . $model . '.delete', $key->$field) . '"';
+        $output .= 'class="btn btn-warning btn-sm">';
+        $output .= getIcon('fas', 'trash');
+        $output .= '</a>';
+    }
+    if ($restore && $user->can($permission_group . '.restore')) {
+        if ($key->trashed()) {
+            $output .= '<a href="' . route('admin.' . $model . '.restore', $key->$field) . '"';
+            $output .= 'class="btn btn-orange btn-sm">';
+            $output .= getIcon('fas', 'undo');
+            $output .= '</a>';
+        }
+    }
+    if ($destroy && $user->can($permission_group . '.destroy')) {
+        if ($key->trashed()) {
+            $output .= '<a href="' . route('admin.' . $model . '.destroy', $key->$field) . '"';
+            $output .= 'class="btn btn-danger btn-sm">';
+            $output .= getIcon('fas', 'times');
+            $output .= '</a>';
+        }
+    }
+    $output .= '</div>';
+    return $output;
 }

@@ -23,7 +23,7 @@
                     </div>
                     <div class="input-group mb-2">
                         <span class="input-group-text">
-                            <x-fas-calendar />
+                            {!! getIcon('fas', 'calendar') !!}
                         </span>
                         <input type="date" class="form-control" name="schedule_date" placeholder="{{ __('Date') }}" />
                         <select class="form-select" name="schedule_hour">

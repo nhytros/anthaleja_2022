@@ -8,7 +8,7 @@
                     <div id="header_actions">
                         @if ($user->can('teacher.create'))
                             <a href="{{ route('admin.school.teacher.add') }}" class="btn btn-sm btn-success">
-                                <x-fas-plus /> {{ trans('school.teacher.add') }}
+                                {!! getIcon('fas', 'plus') !!} {{ trans('school.teacher.add') }}
                             </a>
                         @endif
                     </div>
@@ -25,7 +25,7 @@
                                         @if ($user->can('create.teacher'))
                                             <a href="{{ route('admin.school.teacher.add') }}"
                                                 class="btn btn-sm btn-success">
-                                                <x-fas-plus /> {{ trans('school.teacher.add') }}
+                                                {!! getIcon('fas', 'plus') !!} {{ trans('school.teacher.add') }}
                                             </a>
                                         @endif
                                     </div>
@@ -48,34 +48,7 @@
                                             <td>{{ $teacher->roll_no }}</td>
                                             <td>{{ $teacher->standard }}</td>
                                             <td>
-                                                <div class="btn-group" role="group" aria-label="Action Buttons">
-                                                    @if ($user->can('teacher.edit'))
-                                                        <a href="{{ route('admin.school.teacher.edit', $teacher->id) }}"
-                                                            class="btn btn-primary btn-sm">
-                                                            <x-fas-edit />
-                                                        </a>
-                                                    @endif
-                                                    @if ($user->can('teacher.delete'))
-                                                        <a href="{{ route('admin.school.teacher.delete', $teacher->id) }}"
-                                                            class="btn btn-warning btn-sm">
-                                                            <x-fas-trash />
-                                                        </a>
-                                                    @endif
-                                                    @if ($user->can('teacher.restore'))
-                                                        @if ($teacher->trashed())
-                                                            <a href="{{ route('admin.school.teacher.restore', $teacher->id) }}"
-                                                                class="btn btn-orange btn-sm">
-                                                                <x-fas-undo />
-                                                            </a>
-                                                        @endif
-                                                    @endif
-                                                    @if ($user->can('teacher.destroy'))
-                                                        <a href="{{ route('admin.school.teacher.destroy', $teacher->id) }}"
-                                                            class="btn btn-danger btn-sm">
-                                                            <x-fas-times />
-                                                        </a>
-                                                    @endif
-                                                </div>
+                                            <td>{!! dred($teacher, 'id', 'school.teacher', 'teacher', 1, 1, 1, 1) !!}</td>
                                             </td>
                                         </tr>
                                     @endforeach

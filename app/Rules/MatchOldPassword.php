@@ -36,6 +36,6 @@ class MatchOldPassword implements Rule
      */
     public function message()
     {
-        return trans('frontier.password.match', ['attribute' => $attribute]);;
+        // return trans('frontier.password.match', ['attribute' => $attribute]);;
     }
 }

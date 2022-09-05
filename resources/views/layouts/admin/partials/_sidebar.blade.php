@@ -14,9 +14,29 @@
             <a class="nav-link{{ getActivePage('admin/permission*') }}" href="{{ route('admin.permissions') }}">
                 {!! getIcon('fas', 'user-cog') !!} {{ trans('admin.permissions.manage') }}
             </a>
+            <div class="btn-group">
+                <button type="button" class="btn btn-primary dropdown-toggle text-start" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    {!! getIcon('fas', 'school') !!} {{ __('School') }}
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item{{ getActivePage('admin/school/course*') }}"
+                            href="{{ route('admin.school.courses') }}">
+                            {!! getIcon('fas', 'book') !!} {{ __('Courses') }}
+                        </a></li>
+                    <li><a class="dropdown-item{{ getActivePage('admin/school/teacher*') }}"
+                            href="{{ route('admin.school.teachers') }}">
+                            {!! getIcon('fas', 'chalkboard-teacher') !!} {{ __('Teachers') }}
+                        </a></li>
+                    <li><a class="dropdown-item{{ getActivePage('admin/school/student*') }}"
+                            href="{{ route('admin.school.students') }}">
+                            {!! getIcon('fas', 'book-reader') !!} {{ __('Students') }}
+                        </a></li>
+                </ul>
+            </div>
             <h6
                 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase">
-                {!! getIcon('fas', 'school') !!}<span>{{ __('School') }}</span>
+                {!! getIcon('fas', 'school fa-2x ') !!}<span>{{ __('School') }}</span>
             </h6>
             <a class="nav-link{{ getActivePage('admin/school/course*') }}" href="{{ route('admin.school.courses') }}">
                 {!! getIcon('fas', 'book') !!} {{ __('Courses') }}
@@ -27,7 +47,7 @@
             </a>
             <a class="nav-link{{ getActivePage('admin/school/student*') }}"
                 href="{{ route('admin.school.students') }}">
-                {!! getIcon('fas', 'users-class') !!} {{ __('Students') }}
+                {!! getIcon('fas', 'book-reader') !!} {{ __('Students') }}
             </a>
 
             <li class="nav-item">

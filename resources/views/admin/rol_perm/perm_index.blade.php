@@ -16,29 +16,7 @@
                             @foreach ($permissions as $p)
                                 <tr>
                                     <td>{{ $p->name }}</td>
-                                    <td class="text-end">
-                                        <div class="btn-group" role="group" aria-label="Action Buttons">
-                                            <a href="{{ route('admin.permission.edit', $p->name) }}"
-                                                class="btn btn-primary btn-sm">
-                                                <x-fas-edit />
-                                            </a>
-                                            <a href="{{ route('admin.permission.delete', $p->name) }}"
-                                                class="btn btn-warning btn-sm">
-                                                <x-fas-trash />
-                                            </a>
-                                            @if ($p->trashed())
-                                                <a href="{{ route('admin.permission.restore', $p->name) }}"
-                                                    class="btn btn-orange btn-sm">
-                                                    <x-fas-undo />
-                                                </a>
-                                                <a href="{{ route('admin.permission.destroy', $p->name) }}"
-                                                    class="btn btn-danger btn-sm">
-                                                    <x-fas-times />
-                                                </a>
-                                            @endif
-                                        </div>
-
-                                    </td>
+                                    <td class="text-end">{!! dred($p, 'name', 'permission', 'user', 1, 1, 1, 1) !!}</td>
                                 </tr>
                             @endforeach
                         </table>
@@ -54,7 +32,7 @@
                         <div class="pe-2">
                             @if ($edit)
                                 <a class="nodec btn btn-sm btn-secondary" href="{{ route('admin.permissions') }}">
-                                    <x-fas-arrow-circle-left /> {{ __('Cancel') }}
+                                    {!! getIcon('fas', 'arrow-circle-left') !!} {{ __('Cancel') }}
                                 </a>
                             @endif
                         </div>
@@ -65,7 +43,7 @@
                             method="post">
                             @csrf
                             <div class="input-group">
-                                <span class="input-group-text" id="perm_name">{{ __('Permission') }}</span>
+                                <span class="input-group-text" id="perm_name">{!! __('Permission') !!}</span>
                                 <input class="form-control" type="text" name="name" id="name"
                                     value="{{ !$edit ? old('name') : $permission->name }}" autofocus
                                     aria-describedby="perm_name" />
@@ -96,7 +74,7 @@
                             <div class="pe-2">
                                 @if ($edit)
                                     <a class="nodec btn btn-sm btn-secondary" href="{{ route('admin.roles') }}">
-                                        <x-fas-arrow-circle-left /> {{ __('Cancel') }}
+                                        {!! getIcon('fas', 'arrow-circle-left') !!} {{ __('Cancel') }}
                                     </a>
                                 @endif
                             </div>

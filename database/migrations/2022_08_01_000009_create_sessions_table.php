@@ -13,13 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('school_courses', function (Blueprint $table) {
+        Schema::create('school_sessions', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('slug');
-            $table->foreignId('teacher_id')->constrained('users')->cascadeOnDelete();
-            $table->string('batch_time');
-            $table->datetime('schedule');
+            $table->string('code');
+            $table->boolean('current_session')->nullable()->default(0);
+            // Status: 0=Disabled, 1=Enabled, 2=Archived
+            $table->tinyInteger('status')->nullable()->default(1);
             $table->timestamps();
             $table->softDeletes();
         });
@@ -32,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('school_courses');
+        Schema::dropIfExists('school_sessions');
     }
 };

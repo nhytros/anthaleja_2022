@@ -32,7 +32,7 @@ use App\Http\Controllers\{NewsController, NatterController, FrontierController};
 */
 
 Route::get('/test', function () {
-    // 
+    $user = role(Str::replaceFirst('admin.school.', '', 'admin.school.teacher'))->get()->dd();
 });
 
 Route::group(['middleware' => ['guest']], function () {

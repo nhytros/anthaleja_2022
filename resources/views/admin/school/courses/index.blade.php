@@ -8,7 +8,7 @@
                     <div id="header_actions">
                         @if ($user->can('course.create'))
                             <a href="{{ route('admin.school.course.create') }}" class="btn btn-sm btn-success">
-                                <x-fas-plus /> {{ trans('school.course.create') }}
+                                {!! getIcon('fas', 'plus') !!} {{ trans('school.course.create') }}
                             </a>
                         @endif
                     </div>
@@ -25,7 +25,7 @@
                                         @if ($user->can('create.course'))
                                             <a href="{{ route('admin.school.course.create') }}"
                                                 class="btn btn-sm btn-success">
-                                                <x-fas-plus /> {{ trans('school.course.create') }}
+                                                {!! getIcon('fas', 'plus') !!} {{ trans('school.course.create') }}
                                             </a>
                                         @endif
                                     </div>
@@ -48,36 +48,7 @@
                                             <td>{{ $course->teacher->first_name }}</td>
                                             <td>{{ $course->batch_time }}</td>
                                             <td>{{ $course->schedule->format('Y, d/m G:i') }}</td>
-                                            <td>
-                                                <div class="btn-group" role="group" aria-label="Action Buttons">
-                                                    @if ($user->can('course.edit'))
-                                                        <a href="{{ route('admin.school.course.edit', $course->slug) }}"
-                                                            class="btn btn-primary btn-sm">
-                                                            <x-fas-edit />
-                                                        </a>
-                                                    @endif
-                                                    @if ($user->can('course.delete'))
-                                                        <a href="{{ route('admin.school.course.delete', $course->slug) }}"
-                                                            class="btn btn-warning btn-sm">
-                                                            <x-fas-trash />
-                                                        </a>
-                                                    @endif
-                                                    @if ($user->can('course.restore'))
-                                                        @if ($course->trashed())
-                                                            <a href="{{ route('admin.school.course.restore', $course->slug) }}"
-                                                                class="btn btn-orange btn-sm">
-                                                                <x-fas-undo />
-                                                            </a>
-                                                        @endif
-                                                    @endif
-                                                    @if ($user->can('course.destroy'))
-                                                        <a href="{{ route('admin.school.course.destroy', $course->slug) }}"
-                                                            class="btn btn-danger btn-sm">
-                                                            <x-fas-times />
-                                                        </a>
-                                                    @endif
-                                                </div>
-                                            </td>
+                                            <td>{!! dred($course, 'slug', 'school.course', 'course', 1, 1, 1, 1) !!}</td>
                                         </tr>
                                     @endforeach
                                 </table>

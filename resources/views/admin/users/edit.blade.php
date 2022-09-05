@@ -9,21 +9,21 @@
                         <form action="{{ route('admin.user.update', $user->username) }}" method="post">@csrf
                             <div class="input-group mb-2">
                                 <span class="input-group-text">
-                                    <x-fas-user />
+                                    {!! getIcon('fas', 'user') !!}
                                 </span>
                                 <input type="text" class="form-control" name="username" placeholder="Username"
                                     value="{{ old('username') }}" />
                             </div>
                             <div class="input-group mb-2">
                                 <span class="input-group-text">
-                                    <x-fas-envelope />
+                                    {!! getIcon('fas', 'envelope') !!}
                                 </span>
                                 <input type="text" class="form-control" name="email" placeholder="E-mail"
                                     value="{{ old('email') }}" />
                             </div>
                             <div class="input-group mb-2">
                                 <span class="input-group-text">
-                                    <x-fas-lock />
+                                    {!! getIcon('fas', 'lock') !!}
                                 </span>
                                 <input type="password" name="password" class="form-control" placeholder="Password" />
                             </div>

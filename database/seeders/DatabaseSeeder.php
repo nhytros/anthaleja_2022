@@ -19,13 +19,16 @@ class DatabaseSeeder extends Seeder
             Users_and_Characters::class,
 
             // Shop Seeders
-            Shops::class,
-            Shop_Banners::class,
-            Shop_Sections::class,
-            Shop_Categories::class,
-            Shop_Brands::class,
-            Shop_Products::class,
-            Shop_Product_Attributes::class,
+            // Shops::class,
+            // Shop_Banners::class,
+            // Shop_Sections::class,
+            // Shop_Categories::class,
+            // Shop_Brands::class,
+            // Shop_Products::class,
+            // Shop_Product_Attributes::class,
+
+            // School Seeders (all-in-one)
+            School::class,
 
             // Wiki::class,
             // LittedSeeders::class,

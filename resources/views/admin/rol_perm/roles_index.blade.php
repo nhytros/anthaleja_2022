@@ -16,29 +16,7 @@
                             @foreach ($roles as $r)
                                 <tr>
                                     <td>{{ $r->name }}</td>
-                                    <td class="text-end">
-                                        <div class="btn-group" role="group" aria-label="Action Buttons">
-                                            <a href="{{ route('admin.role.edit', $r->name) }}"
-                                                class="btn btn-primary btn-sm">
-                                                <x-fas-edit />
-                                            </a>
-                                            <a href="{{ route('admin.role.delete', $r->name) }}"
-                                                class="btn btn-warning btn-sm">
-                                                <x-fas-trash />
-                                            </a>
-                                            @if ($r->trashed())
-                                                <a href="{{ route('admin.role.restore', $r->name) }}"
-                                                    class="btn btn-orange btn-sm">
-                                                    <x-fas-undo />
-                                                </a>
-                                                <a href="{{ route('admin.role.destroy', $r->name) }}"
-                                                    class="btn btn-danger btn-sm">
-                                                    <x-fas-times />
-                                                </a>
-                                            @endif
-                                        </div>
-
-                                    </td>
+                                    <td class="text-end">{!! dred($r, 'name', 'role', 'user', 1, 1, 1, 1) !!}</td>
                                 </tr>
                             @endforeach
                         </table>
@@ -54,7 +32,7 @@
                         <div class="pe-2">
                             @if ($edit)
                                 <a class="nodec btn btn-sm btn-secondary" href="{{ route('admin.roles') }}">
-                                    <x-fas-arrow-circle-left /> {{ __('Cancel') }}
+                                    {!! getIcon('fas', 'arrow-circle-left') !!} {{ __('Cancel') }}
                                 </a>
                             @endif
                         </div>
@@ -96,7 +74,7 @@
                             <div class="pe-2">
                                 @if ($edit)
                                     <a class="nodec btn btn-sm btn-secondary" href="{{ route('admin.permissions') }}">
-                                        <x-fas-arrow-circle-left /> {{ __('Cancel') }}
+                                        {!! getIcon('fas', 'arrow-circle-left') !!} {{ __('Cancel') }}
                                     </a>
                                 @endif
                             </div>

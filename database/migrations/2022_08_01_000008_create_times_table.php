@@ -13,13 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('school_courses', function (Blueprint $table) {
+        Schema::create('school_times', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('shift_id')->constrained('school_shifts')->nullable();
             $table->string('name');
-            $table->string('slug');
-            $table->foreignId('teacher_id')->constrained('users')->cascadeOnDelete();
-            $table->string('batch_time');
-            $table->datetime('schedule');
+            $table->string('code');
+            $table->string('start');
+            $table->string('end');
+            // Status: 0=Disabled, 1=Enabled, 2=Archived
+            $table->tinyInteger('status')->nullable()->default(1);
             $table->timestamps();
             $table->softDeletes();
         });
@@ -32,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('school_courses');
+        Schema::dropIfExists('school_times');
     }
 };

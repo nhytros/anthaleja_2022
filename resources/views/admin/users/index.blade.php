@@ -25,27 +25,7 @@
                                     <td>{{ $u->status ? __('Active') : __('Blocked') }}</td>
                                     <td>{{ $u->character->username ?? __('None') }}</td>
                                     <td class="text-end">
-                                        <div class="btn-group" role="group" aria-label="Action Buttons">
-                                            <a href="{{ route('admin.user.edit', $u->username) }}"
-                                                class="btn btn-primary btn-sm">
-                                                <x-fas-edit />
-                                            </a>
-                                            <a href="{{ route('admin.user.delete', $u->username) }}"
-                                                class="btn btn-warning btn-sm">
-                                                <x-fas-trash />
-                                            </a>
-                                            @if ($u->trashed())
-                                                <a href="{{ route('admin.user.restore', $u->username) }}"
-                                                    class="btn btn-orange btn-sm">
-                                                    <x-fas-undo />
-                                                </a>
-                                                <a href="{{ route('admin.user.destroy', $u->username) }}"
-                                                    class="btn btn-danger btn-sm">
-                                                    <x-fas-times />
-                                                </a>
-                                            @endif
-                                        </div>
-
+                                        {!! dred($u, 'username', 'user', 'user', 1, 1, 1, 1) !!}
                                     </td>
                                 </tr>
                             @endforeach

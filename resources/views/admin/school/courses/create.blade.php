@@ -12,13 +12,6 @@
             <div class="card-header">
                 <span class="d-flex justify-content-between">
                     <h4>{{ $title }}</h4>
-                    <div id="header_actions">
-                        @if ($user->can('course.create'))
-                            <a href="{{ route('admin.school.course.create') }}" class="btn btn-sm btn-success">
-                                <x-fas-plus /> {{ trans('school.course.create') }}
-                            </a>
-                        @endif
-                    </div>
                 </span>
             </div>
             <div class="card-body">
@@ -42,20 +35,20 @@
                     </div>
                     <div class="input-group mb-2">
                         <span class="input-group-text">
-                            <x-fas-tag />
+                            {!! getIcon('fas', 'tag') !!}
                         </span>
                         <input type="text" class="form-control" name="name" placeholder="{{ __('Course name') }}" />
                     </div>
                     <div class="input-group mb-2">
                         <span class="input-group-text">
-                            <x-fas-clock />
+                            {!! getIcon('fas', 'clock') !!}
                         </span>
                         <input type="text" class="form-control" name="batch_time"
                             placeholder="{{ __('Batch time') }}" />
                     </div>
                     <div class="input-group mb-2">
                         <span class="input-group-text">
-                            <x-fas-calendar />
+                            {!! getIcon('fas', 'calendar') !!}
                         </span>
                         <input type="date" class="form-control" name="schedule_date"
                             placeholder="{{ __('Date') }}" />

@@ -25,7 +25,7 @@ class Users_and_Characters extends Seeder
         $admin->assignRole('admin');
         $admin->givePermissionTo('user');
         $admin->givePermissionTo('character');
-        $admin->givePermissionTo('course');
+        $admin->givePermissionTo('school');
 
         $gov = User::create([
             'username' => 'jjnhytros',
@@ -51,7 +51,7 @@ class Users_and_Characters extends Seeder
             'phone_no' => '649-8767',
         ]);
 
-        for ($u = 3; $u <= 100; $u++) {
+        for ($u = 3; $u <= 25; $u++) {
             $user = User::create([
                 'id' => $u,
                 'username' => $faker->unique()->username(),
@@ -109,7 +109,6 @@ class Users_and_Characters extends Seeder
             if ($isTeacher) {
                 Teacher::create([
                     'character_id' => $c->id,
-                    'roll_no' => $faker->unique()->numberBetween(1, 2147483647),
                     'standard' => $faker->numberBetween(1, 5),
                 ]);
             }
