@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('phone');
             $table->string('email')->unique();
             $table->string('website')->unique()->nullable();
-            $table->tinyInteger('')->nullable()->default(0);
+            $table->tinyInteger('status')->nullable()->default(0);
             $table->foreignId('created_by')->nullable()->constrained('characters')->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('updated_by')->nullable()->constrained('characters')->cascadeOnDelete()->cascadeOnUpdate();
 

@@ -13,13 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('hospital_suppliers', function (Blueprint $table) {
+        Schema::create('hospital_schedules', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('company_id')->constrained('shops')->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreignId('character_id')->constrained('characters')->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreignId('product_id')->constrained('products')->cascadeOnDelete()->cascadeOnUpdate();
-            $table->text('description');
+            $table->time('start');
+            $table->time('end');
             $table->boolean('status')->nullable()->default(0);
+            $table->string('available_days')->nullable();
+            $table->string('note')->nullable();
+            $table->foreignId('doctor_id')->nullable()->constrained('hospital_doctors')->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('created_by')->nullable()->constrained('characters')->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('updated_by')->nullable()->constrained('characters')->cascadeOnDelete()->cascadeOnUpdate();
 
@@ -35,6 +36,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('hospital_suppliers');
+        Schema::dropIfExists('hospital_schedules');
     }
 };

@@ -22,8 +22,8 @@ return new class extends Migration
             $table->dateTime('dispatch_date')->nullable();
             $table->dateTime('cancel_dispatch_date')->nullable();
             $table->boolean('status')->nullable()->default(0);
-            $table->foreignId('investigation_id')->nullable()->constrained('investigations')->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreignId('laboratory_id')->nullable()->constrained('laboratories')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('investigation_id')->nullable()->constrained('hospital_investigations')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('laboratory_id')->nullable()->constrained('hospital_laboratories')->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('approved_by')->nullable()->constrained('characters')->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('created_by')->nullable()->constrained('characters')->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('updated_by')->nullable()->constrained('characters')->cascadeOnDelete()->cascadeOnUpdate();

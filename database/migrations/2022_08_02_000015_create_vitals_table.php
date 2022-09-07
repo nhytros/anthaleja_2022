@@ -38,7 +38,7 @@ return new class extends Migration
             $table->boolean('status')->nullable()->default(0);
             $table->foreignId('patient_id')->constrained('hospital_patients', 'id')->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('patient_visit_id')->constrained('hospital_patient_visits', 'id')->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreignId('doctor_id')->constrained('hospital_doctorss', 'id')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('doctor_id')->nullable()->constrained('hospital_doctors')->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('created_by')->nullable()->constrained('characters')->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('updated_by')->nullable()->constrained('characters')->cascadeOnDelete()->cascadeOnUpdate();
 

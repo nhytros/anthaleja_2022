@@ -14,101 +14,74 @@
             <a class="nav-link{{ getActivePage('admin/permission*') }}" href="{{ route('admin.permissions') }}">
                 {!! getIcon('fas', 'user-cog') !!} {{ trans('admin.permissions.manage') }}
             </a>
-            <div class="btn-group">
-                <button type="button" class="btn btn-primary dropdown-toggle text-start" data-bs-toggle="dropdown"
-                    aria-expanded="false">
-                    {!! getIcon('fas', 'school') !!} {{ __('School') }}
-                </button>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item{{ getActivePage('admin/school/course*') }}"
-                            href="{{ route('admin.school.courses') }}">
-                            {!! getIcon('fas', 'book') !!} {{ __('Courses') }}
-                        </a></li>
-                    <li><a class="dropdown-item{{ getActivePage('admin/school/teacher*') }}"
-                            href="{{ route('admin.school.teachers') }}">
-                            {!! getIcon('fas', 'chalkboard-teacher') !!} {{ __('Teachers') }}
-                        </a></li>
-                    <li><a class="dropdown-item{{ getActivePage('admin/school/student*') }}"
-                            href="{{ route('admin.school.students') }}">
-                            {!! getIcon('fas', 'book-reader') !!} {{ __('Students') }}
-                        </a></li>
-                </ul>
-            </div>
-            <h6
-                class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase">
-                {!! getIcon('fas', 'school fa-2x ') !!}<span>{{ __('School') }}</span>
-            </h6>
-            <a class="nav-link{{ getActivePage('admin/school/course*') }}" href="{{ route('admin.school.courses') }}">
-                {!! getIcon('fas', 'book') !!} {{ __('Courses') }}
-            </a>
-            <a class="nav-link{{ getActivePage('admin/school/teacher*') }}"
-                href="{{ route('admin.school.teachers') }}">
-                {!! getIcon('fas', 'chalkboard-teacher') !!} {{ __('Teachers') }}
-            </a>
-            <a class="nav-link{{ getActivePage('admin/school/student*') }}"
-                href="{{ route('admin.school.students') }}">
-                {!! getIcon('fas', 'book-reader') !!} {{ __('Students') }}
-            </a>
+            @if (auth()->user()->can('school'))
+                @include('layouts.admin.partials._dd-school')
+            @endif
+            @if (auth()->user()->can('hospital'))
+                @include('layouts.admin.partials._dd-hospital')
+            @endif
 
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <span data-feather="shopping-cart" class="align-text-bottom"></span>
-                    Products
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <span data-feather="users" class="align-text-bottom"></span>
-                    Customers
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <span data-feather="bar-chart-2" class="align-text-bottom"></span>
-                    Reports
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <span data-feather="layers" class="align-text-bottom"></span>
-                    Integrations
-                </a>
-            </li>
         </div>
 
-        <h6
-            class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase">
-            <span>Saved reports</span>
-            <a class="link-secondary" href="#" aria-label="Add a new report">
-                <span data-feather="plus-circle" class="align-text-bottom"></span>
+        <li class="nav-item">
+            <a class="nav-link" href="#">
+                <span data-feather="shopping-cart" class="align-text-bottom"></span>
+                Products
             </a>
-        </h6>
-        <ul class="nav flex-column mb-2">
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <span data-feather="file-text" class="align-text-bottom"></span>
-                    Current month
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <span data-feather="file-text" class="align-text-bottom"></span>
-                    Last quarter
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <span data-feather="file-text" class="align-text-bottom"></span>
-                    Social engagement
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <span data-feather="file-text" class="align-text-bottom"></span>
-                    Year-end sale
-                </a>
-            </li>
-        </ul>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">
+                <span data-feather="users" class="align-text-bottom"></span>
+                Customers
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">
+                <span data-feather="bar-chart-2" class="align-text-bottom"></span>
+                Reports
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">
+                <span data-feather="layers" class="align-text-bottom"></span>
+                Integrations
+            </a>
+        </li>
+    </div>
+
+    <h6
+        class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted text-uppercase">
+        <span>Saved reports</span>
+        <a class="link-secondary" href="#" aria-label="Add a new report">
+            <span data-feather="plus-circle" class="align-text-bottom"></span>
+        </a>
+    </h6>
+    <ul class="nav flex-column mb-2">
+        <li class="nav-item">
+            <a class="nav-link" href="#">
+                <span data-feather="file-text" class="align-text-bottom"></span>
+                Current month
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">
+                <span data-feather="file-text" class="align-text-bottom"></span>
+                Last quarter
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">
+                <span data-feather="file-text" class="align-text-bottom"></span>
+                Social engagement
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">
+                <span data-feather="file-text" class="align-text-bottom"></span>
+                Year-end sale
+            </a>
+        </li>
+    </ul>
     </div>
 </nav>
 

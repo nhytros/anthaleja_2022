@@ -26,6 +26,7 @@ class Users_and_Characters extends Seeder
         $admin->givePermissionTo('user');
         $admin->givePermissionTo('character');
         $admin->givePermissionTo('school');
+        $admin->givePermissionTo('hospital');
 
         $gov = User::create([
             'username' => 'jjnhytros',

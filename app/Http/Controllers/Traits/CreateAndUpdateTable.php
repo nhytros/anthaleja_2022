@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Traits;
 
 trait CreateAndUpdateTable
 {
-    public static function boot($model)
+    public static function CreateAndUpdateTableBoot($model)
     {
         if (auth()->check()) {
             static::creating(function ($model) {

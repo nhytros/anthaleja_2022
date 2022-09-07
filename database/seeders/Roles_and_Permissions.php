@@ -115,6 +115,9 @@ class Roles_and_Permissions extends Seeder
         Permission::create(['name' => 'school.time.restore']);
         Permission::create(['name' => 'school.time.destroy']);
 
+        // Hospital
+        Permission::create(['name' => 'hospital']);
+
         $admin->givePermissionTo('user');
         $admin->givePermissionTo('character');
         $admin->givePermissionTo('role');

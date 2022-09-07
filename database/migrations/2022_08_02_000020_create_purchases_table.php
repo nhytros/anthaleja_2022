@@ -29,14 +29,14 @@ return new class extends Migration
             // Quantity & Prices
             $table->unsignedBigInteger('quantity')->nullable()->default(0);
             $table->string('quantity_type')->nullable();
-            $table->decimal('price', 10, 2)->nullable();
+            $table->decimal('price', 12, 2)->nullable();
             $table->date('expiration_date')->nullable();
             $table->text('note')->nullable();
             $table->string('image')->nullable();
             $table->boolean('status')->nullable()->default(0);
-            $table->foreignId('medicine_type_id')->nullable()->constrained('school_medicine_types')->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreignId('medicine_category_id')->nullable()->constrained('school_medicine_categories')->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreignId('supplier_id')->nullable()->constrained('school_suppliers')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('medicine_type_id')->nullable()->constrained('hospital_medicine_types')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('medicine_category_id')->nullable()->constrained('hospital_medicine_categories')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('supplier_id')->nullable()->constrained('hospital_suppliers')->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('created_by')->nullable()->constrained('characters')->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('updated_by')->nullable()->constrained('characters')->cascadeOnDelete()->cascadeOnUpdate();
 
