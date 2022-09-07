@@ -41,8 +41,8 @@ class Users_and_Characters extends Seeder
         $this->command->getOutput()->writeln("<info>Creating Governor Character...</info>");
         $ch_gov = Character::create([
             'user_id' => 2,
-            'first_name' => 'Governor',
-            'last_name' => 'J.J. Nhytros',
+            'first_name' => 'Jerome',
+            'last_name' => 'Nhytros',
             'username' => 'jjnhytros',
             'gender' => 'M',
             'height' => '178',
@@ -55,8 +55,9 @@ class Users_and_Characters extends Seeder
             'phone_no' => '649-8767',
         ]);
 
-        $this->command->getOutput()->writeln("<info>Generating Users...</info>");
-        for ($u = 3; $u <= 25; $u++) {
+        $nu = rand(25, 100);
+        $this->command->getOutput()->writeln("<info>Generating {$nu} Users...</info>");
+        for ($u = 3; $u <= $nu; $u++) {
             $user = User::create([
                 'id' => $u,
                 'username' => $faker->unique()->username(),
@@ -77,6 +78,18 @@ class Users_and_Characters extends Seeder
             if ($isStudent && $isTeacher) {
                 $user->removeRole($faker->randomElement(['teacher', 'student']));
             }
+            if ($user->doesntHave('roles')) {
+                if ($faker->boolean(5)) {
+                    $user->assignRole('doctor');
+                    $isDoctor = true;
+                }
+            };
+            if ($user->doesntHave('roles')) {
+                if ($faker->boolean(5)) {
+                    $user->assignRole('nurse');
+                    $isNurse = true;
+                }
+            };
             $gender = $faker->randomElement(['M', 'F', 'O']);
             if ($gender == 'F') {
                 $first_name = $faker->unique()->firstNameFemale();

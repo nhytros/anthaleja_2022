@@ -2,6 +2,8 @@
 
 namespace App\Models\Hospital;
 
+use App\Models\Character;
+use App\Models\Hospital\BloodStock;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Http\Controllers\Traits\CreateAndUpdateTable;
@@ -16,4 +18,19 @@ class BloodStockDetail extends Model
         'unit', 'total', 'balance', 'blood_stock_id',
         'created_by', 'updated_by',
     ];
+
+    public function blood_stocks()
+    {
+        return $this->hasMany(BloodStock::class, 'blood_stock_id', 'id');
+    }
+
+    public function createdBy()
+    {
+        return $this->belongsTo(Character::class, 'created_by', 'id');
+    }
+
+    public function updatedBy()
+    {
+        return $this->belongsTo(Character::class, 'updated_by', 'id');
+    }
 }

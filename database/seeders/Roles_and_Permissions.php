@@ -17,13 +17,18 @@ class Roles_and_Permissions extends Seeder
     public function run()
     {
         // Roles
-        $admin = Role::create(['name' => 'admin']);
-        $gov = Role::create(['name' => 'government']);
-        $staff = Role::create(['name' => 'staff']);
+        $admin = Role::create(['name' => 'admin', 'priority' => -12]);
+        $gov = Role::create(['name' => 'government', 'priority' => -8]);
+        $staff = Role::create(['name' => 'staff', 'priority' => -6]);
         $vendor = Role::create(['name' => 'vendor']);
         $teacher = Role::create(['name' => 'teacher']);
         $student = Role::create(['name' => 'student']);
         $doctor = Role::create(['name' => 'doctor']);
+        $nurse = Role::create(['name' => 'nurse']);
+        $pharmacy = Role::create(['name' => 'pharmacy']);
+        $accountant = Role::create(['name' => 'accountant']);
+        $sales = Role::create(['name' => 'sales']);
+        $patient = Role::create(['name' => 'patient']);
         $user = Role::create(['name' => 'user']);
 
         // Permissions
@@ -73,6 +78,7 @@ class Roles_and_Permissions extends Seeder
             Permissions_Hospital::class,
         ]);
 
+        $this->command->getOutput()->writeln("<info>Generating Permissions...</info>");
         $admin->givePermissionTo('user');
         $admin->givePermissionTo('character');
         $admin->givePermissionTo('role');
@@ -87,5 +93,7 @@ class Roles_and_Permissions extends Seeder
 
         $doctor->givePermissionTo('hospital.patient.show');
         $doctor->givePermissionTo('hospital.patient.export');
+
+        $nurse->givePermissionTo('hospital.patient.show');
     }
 }

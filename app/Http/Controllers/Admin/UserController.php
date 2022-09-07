@@ -24,13 +24,13 @@ class UserController extends Controller
 
     public function list_by_role($role)
     {
-        $r = Role::findOrFail($role);
         $users = User::with('character')->role($role)->withTrashed()->get();
 
         return view('admin.users.index', [
-            'title' => trans('admin.users.list_by_role', ['role' => $r->name]),
+            'title' => trans('admin.users.list_by_role', ['role' => $role]),
             'users' => $users,
-            'roles' => Role::whereNotIn('name', ['admin'])->get(),
+            'roles' => Role::whereNotIn('name', ['admin'])
+                ->orderBy('priority')->orderBy('name')->get(),
         ]);
     }
 

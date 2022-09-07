@@ -35,5 +35,5 @@ return [
     'user.restored_ok' => 'User restored successfully',
     'user.updated_ok' => 'User updated successfully',
     'users.manage' => 'Manage users',
-    'users.list_by_role' => "List of users with role: <strong>:role</strong>",
+    'users.list_by_role' => "List of users with role: :role",
 ];

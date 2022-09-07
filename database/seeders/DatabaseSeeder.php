@@ -34,5 +34,6 @@ class DatabaseSeeder extends Seeder
             // LittedSeeders::class,
 
         ]);
+        $this->command->getOutput()->writeln("<info>DONE</info>");
     }
 }

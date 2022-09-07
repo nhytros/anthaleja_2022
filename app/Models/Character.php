@@ -2,7 +2,10 @@
 
 namespace App\Models;
 
+use Attribute;
+use Carbon\Carbon;
 use App\Models\Litted\Post;
+use Illuminate\Support\Str;
 use App\Models\Chat\Conversation;
 use App\Models\Shop\{Shop, Product};
 use Illuminate\Support\Facades\Auth;
@@ -122,6 +125,42 @@ class Character extends Model
                 'thirst' => $status->thirst -= .25,
             ]);
         }
+    }
+
+    public function createdBy()
+    {
+        return $this->belongsTo(Character::class, 'created_by', 'id');
+    }
+
+    public function updatedBy()
+    {
+        return $this->belongsTo(Character::class, 'updated_by', 'id');
+    }
+
+    protected function name(): Attribute
+    {
+        return new Attribute(
+            get: fn ($value) => ucfirst($value),
+            set: fn ($value) => Str::lower($value)
+        );
+    }
+
+    protected function created_at(): Attribute
+    {
+        return new Attribute(
+            get: fn ($value) => Carbon::parse($value)->toDateTimeString(),
+            set: fn ($value) => date('Y-m-d', strtotime($value))
+        );
+    }
+
+    public static function search($search)
+    {
+        return empty($search)
+            ? static::query()
+            : static::where('id', 'like', '%' . $search . '%')
+            ->orWhere('username', 'like', '%' . $search . '%')
+            ->orWhere('first_name', 'like', '%' . $search . '%')
+            ->orWhere('last_name', 'like', '%' . $search . '%');
     }
 
     public function scopeGetActiveCharacterRoleAsTeacher($query, $uid)

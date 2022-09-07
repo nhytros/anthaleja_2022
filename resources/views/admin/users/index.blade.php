@@ -14,8 +14,13 @@
                                     aria-expanded="false">{{ __('Roles') }}</button>
                                 <ul class="dropdown-menu dropdown-menu-end">
                                     @foreach ($roles as $role)
-                                        <li><a class="dropdown-item"
-                                                href="{{ route('admin.users.byrole', $role) }}">{{ $role->name }}</a></li>
+                                        <li>
+                                            <a class="dropdown-item{{ getActivePage('admin/users/role/' . $role->name) }}"
+                                                href="{{ route('admin.users.byrole', $role->name) }}">{{ ucfirst($role->name) }}</a>
+                                            @if ($role->priority != 0)
+                                                <div class="dropdown-divider"></div>
+                                            @endif
+                                        </li>
                                     @endforeach
                                 </ul>
                             </div> {{-- @endif --}}
@@ -41,7 +46,7 @@
                                     <td>{{ $u->email }}</td>
                                     <td>{{ $u->created_at }}</td>
                                     <td>{{ $u->status ? __('Active') : __('Blocked') }}</td>
-                                    <td>{{ $u->character->username ?? __('None') }}</td>
+                                    <td>{{ $u->character->last_name . ' ' . $u->character->first_name ?? __('None') }}</td>
                                     <td class="text-end">
                                         {!! dred($u, 'username', 'user', 'user', 1, 1, 1, 1) !!}
                                     </td>

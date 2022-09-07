@@ -2,10 +2,14 @@
 
 namespace App\Models\Hospital;
 
+use App\Models\Character;
+use App\Models\Hospital\Patient;
+use App\Models\Hospital\TestType;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Http\Controllers\Traits\CreateAndUpdateTable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Hospital\Doctor;
 
 class Investigation extends Model
 {
@@ -17,4 +21,29 @@ class Investigation extends Model
         'test_type_id', 'patient_id', 'patient_visit_id', 'doctor_id',
         'created_by', 'updated_by',
     ];
+
+    public function test_type()
+    {
+        return $this->hasMany(TestType::class, 'test_type_id', 'id');
+    }
+
+    public function patient_visit()
+    {
+        return $this->hasMany(Patient::class, 'patient_visit_id', 'id');
+    }
+
+    public function doctor()
+    {
+        return $this->belongsTo(Doctor::class, 'doctor_id', 'id');
+    }
+
+    public function createdBy()
+    {
+        return $this->belongsTo(Character::class, 'created_by', 'id');
+    }
+
+    public function updatedBy()
+    {
+        return $this->belongsTo(Character::class, 'updated_by', 'id');
+    }
 }

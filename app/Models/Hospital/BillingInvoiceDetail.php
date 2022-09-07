@@ -2,6 +2,8 @@
 
 namespace App\Models\Hospital;
 
+use App\Models\Character;
+use App\Models\Hospital\BillingInvoice;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Http\Controllers\Traits\CreateAndUpdateTable;
@@ -16,4 +18,19 @@ class BillingInvoiceDetail extends Model
         'item_amount', 'item_total_amount', 'status', 'billing_invoice_id',
         'created_by', 'updated_by',
     ];
+
+    public function billing_invoice()
+    {
+        return $this->belongsTo(BillingInvoice::class, 'billing_invoice_id', 'id');
+    }
+
+    public function createdBy()
+    {
+        return $this->belongsTo(Character::class, 'created_by', 'id');
+    }
+
+    public function updatedBy()
+    {
+        return $this->belongsTo(Character::class, 'updated_by', 'id');
+    }
 }

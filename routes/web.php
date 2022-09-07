@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Role;
 use App\Models\User;
 use App\Helpers\Astro;
 use App\Helpers\ATHDateTime;
@@ -32,7 +33,10 @@ use App\Http\Controllers\{NewsController, NatterController, FrontierController};
 */
 
 Route::get('/test', function () {
-    $user = role(Str::replaceFirst('admin.school.', '', 'admin.school.teacher'))->get()->dd();
+    $pharmacy = Role::create(['name' => 'pharmacy']);
+    $accountant = Role::create(['name' => 'accountant']);
+    $sales = Role::create(['name' => 'sales']);
+    $patient = Role::create(['name' => 'patient']);
 });
 
 Route::group(['middleware' => ['guest']], function () {
