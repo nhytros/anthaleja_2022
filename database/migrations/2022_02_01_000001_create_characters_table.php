@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('characters', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
+            $table->string('title')->nullable()->comment('such as Dr., Mr., Mrs., etc.');
             $table->string('first_name', 48);
             $table->string('last_name', 48);
             $table->string('username', 96);
@@ -33,6 +34,8 @@ return new class extends Migration
             $table->string('phone_no', 8)->nullable();
             // Status: 0=Disabled, 1=Enabled, 2=Archived
             $table->tinyInteger('status')->nullable()->default(1);
+            $table->foreignId('created_by')->nullable()->constrained('characters')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('updated_by')->nullable()->constrained('characters')->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
             $table->softDeletes();
         });

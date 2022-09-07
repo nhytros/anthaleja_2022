@@ -2,23 +2,23 @@
 
 namespace App\Models;
 
-use App\Models\Shop\{Shop, Product};
-use App\Models\Chat\Conversation;
 use App\Models\Litted\Post;
-use App\Models\School\{Course, Teacher, Student};
+use App\Models\Chat\Conversation;
+use App\Models\Shop\{Shop, Product};
 use Illuminate\Support\Facades\Auth;
+use App\Models\School\{Course, Teacher, Student};
+use App\Http\Controllers\Traits\CreateAndUpdateTable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\{Model, SoftDeletes};
 
 class Character extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory, SoftDeletes, CreateAndUpdateTable;
 
     protected $fillable = [
-        'user_id', 'first_name', 'last_name', 'username', 'gender', 'height',
-        // 'bank_account', 'cash', 'bank_amount', 'metals',
-        'thirst', 'hunger', 'energy', 'status',
-        // 'has_phone', 'phone_no'
+        'bank_account', 'bank_amount', 'cash', 'created_by', 'date_of_birth', 'energy', 'first_name',
+        'gender', 'has_phone', 'height', 'hunger', 'last_name', 'metals', 'phone_no', 'status', 'thirst',
+        'title', 'updated_by', 'user_id', 'username',
     ];
 
     public function id(): int|false
@@ -98,12 +98,13 @@ class Character extends Model
         return false;
     }
 
-    public function getName()
+    public function getName($character = null)
     {
-        $character = auth()->user()->character;
-        if ($character->first_name && $character->last_name) {
-            return $character->first_name . ' ' . $character->last_name;
-        }
+        // $user=User::with('characters')->where
+        // $character = auth()->user()->character??;
+        // if ($character->first_name && $character->last_name) {
+        //     return $character->first_name . ' ' . $character->last_name;
+        // }
     }
 
     public function getUsername()
