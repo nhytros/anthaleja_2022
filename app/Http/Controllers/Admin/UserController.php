@@ -18,6 +18,19 @@ class UserController extends Controller
         return view('admin.users.index', [
             'title' => trans('admin.users.manage_users'),
             'users' => $users,
+            'roles' => Role::whereNotIn('name', ['admin'])->get(),
+        ]);
+    }
+
+    public function list_by_role($role)
+    {
+        $r = Role::findOrFail($role);
+        $users = User::with('character')->role($role)->withTrashed()->get();
+
+        return view('admin.users.index', [
+            'title' => trans('admin.users.list_by_role', ['role' => $r->name]),
+            'users' => $users,
+            'roles' => Role::whereNotIn('name', ['admin'])->get(),
         ]);
     }
 

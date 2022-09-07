@@ -16,6 +16,7 @@ class Users_and_Characters extends Seeder
         $isStudent = false;
         $isTeacher = false;
 
+        $this->command->getOutput()->writeln("<info>Creating Admin User...</info>");
         $admin = User::create([
             'username' => 'admin',
             'email' => 'admin@anthaleja.ovh',
@@ -28,6 +29,7 @@ class Users_and_Characters extends Seeder
         $admin->givePermissionTo('school');
         $admin->givePermissionTo('hospital');
 
+        $this->command->getOutput()->writeln("<info>Creating Governor User...</info>");
         $gov = User::create([
             'username' => 'jjnhytros',
             'email' => 'jjnhytros@anthaleja.ovh',
@@ -36,6 +38,7 @@ class Users_and_Characters extends Seeder
         ]);
         $gov->assignRole('government');
 
+        $this->command->getOutput()->writeln("<info>Creating Governor Character...</info>");
         $ch_gov = Character::create([
             'user_id' => 2,
             'first_name' => 'Governor',
@@ -52,6 +55,7 @@ class Users_and_Characters extends Seeder
             'phone_no' => '649-8767',
         ]);
 
+        $this->command->getOutput()->writeln("<info>Generating Users...</info>");
         for ($u = 3; $u <= 25; $u++) {
             $user = User::create([
                 'id' => $u,
@@ -85,6 +89,7 @@ class Users_and_Characters extends Seeder
                 $height = $faker->numberBetween(140, 210);
             }
 
+            $this->command->getOutput()->writeln("<info>Generating Character #" . $u . "</info>");
             $c = Character::create([
                 'user_id' => $u,
                 'first_name' => $first_name,

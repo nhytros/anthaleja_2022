@@ -1,4 +1,4 @@
-<div class="btn-group mb-2">
+<div class="btn-group mb-2 px-1">
     <button type="button" class="btn btn-primary dropdown-toggle text-start" data-bs-toggle="dropdown"
         aria-expanded="false">
         {!! getIcon('fas', 'school') !!} {{ __('School') }}
@@ -17,3 +17,4 @@
                 {!! getIcon('fas', 'book-reader') !!} {{ __('Students') }}
             </a></li>
     </ul>
+</div>

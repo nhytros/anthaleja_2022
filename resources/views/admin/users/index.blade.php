@@ -4,7 +4,25 @@
         <div class="row">
             <div class="col-12">
                 <div class="card shadow">
-                    <div class="h4 card-header">{{ $title }}</div>
+
+                    <div class="h4 card-header">
+                        <span class="d-flex justify-content-between">
+                            {{-- @if ($user->can('teacher.create')) --}}
+                            <span>{!! $title !!}</span>
+                            <div class="dropdown">
+                                <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false">{{ __('Roles') }}</button>
+                                <ul class="dropdown-menu dropdown-menu-end">
+                                    @foreach ($roles as $role)
+                                        <li><a class="dropdown-item"
+                                                href="{{ route('admin.users.byrole', $role) }}">{{ $role->name }}</a></li>
+                                    @endforeach
+                                </ul>
+                            </div> {{-- @endif --}}
+                        </span>
+                    </div>
+
+
                     <div class="card-body">
                         <table class="table">
                             <thead>

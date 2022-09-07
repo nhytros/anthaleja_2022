@@ -13,6 +13,9 @@
 a.nodec {
     text-decoration: none;
 }
+.text-small-caps {
+    font-variant: small-caps;
+}
 .list-group-item.borderless {
     border: var(--bs-list-group-border-width) 0;
 }

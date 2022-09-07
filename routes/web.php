@@ -141,6 +141,7 @@ Route::middleware(['auth', 'role:admin'])->name('admin.')->prefix('admin')
 
             // Users
             Route::get('users', [UserController::class, 'index'])->name('users');
+            Route::get('users/role/{role}', [UserController::class, 'list_by_role'])->name('users.byrole');
             Route::get('users/status', [UserController::class, 'userOnlineStatus'])->name('users.status');
             Route::get('user/create', [UserController::class, 'create'])->name('user.create');
             Route::post('user/store', [UserController::class, 'store'])->name('user.store');

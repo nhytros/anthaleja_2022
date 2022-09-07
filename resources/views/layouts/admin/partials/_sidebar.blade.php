@@ -22,13 +22,13 @@
             @endif
 
         </div>
-
         <li class="nav-item">
             <a class="nav-link" href="#">
                 <span data-feather="shopping-cart" class="align-text-bottom"></span>
                 Products
             </a>
         </li>
+
         <li class="nav-item">
             <a class="nav-link" href="#">
                 <span data-feather="users" class="align-text-bottom"></span>
@@ -85,7 +85,7 @@
     </div>
 </nav>
 
-<script>
+{{-- <script>
     (function() {
         setInterval(function() {
             axios.get('layouts.common._clock', )
@@ -95,4 +95,4 @@
                 }); // do nothing for error - leaving old content.
         });
     }, 1000); // milliseconds
-</script>
+</script> --}}
