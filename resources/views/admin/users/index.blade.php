@@ -33,20 +33,34 @@
                             <thead>
                                 <tr>
                                     <th>{{ __('Username') }}</th>
+                                    <th>{{ __('Roles') }}</th>
                                     <th>{{ __('Email') }}</th>
-                                    <th>{{ __('Created at') }}</th>
-                                    <th>{{ __('Status') }}</th>
                                     <th>{{ __('Characters') }}</th>
+                                    <th>{{ __('Status') }}</th>
                                     <th class="text-end">{{ __('Actions') }}</th>
                                 </tr>
                             </thead>
                             @foreach ($users as $u)
                                 <tr>
-                                    <td>{{ $u->username }}</td>
+                                    <td>{!! gravatar($u->email, 24) !!} {{ $u->username }}</td>
+                                    <td>
+                                        <ul class="nav flex-column">
+                                            @foreach ($u->getRoleNames() as $ur)
+                                                @if (isset($srole) && $ur == $srole)
+                                                    <li class="nav-item">
+                                                        <strong class="text-danger">{{ $ur }}</strong>
+                                                    </li>
+                                                @else
+                                                    <li class="nav-item">
+                                                        <em>{{ $ur }}</em>
+                                                    </li>
+                                                @endif
+                                            @endforeach
+                                        </ul>
+                                    </td>
                                     <td>{{ $u->email }}</td>
-                                    <td>{{ $u->created_at }}</td>
-                                    <td>{{ $u->status ? __('Active') : __('Blocked') }}</td>
                                     <td>{{ $u->character->last_name . ' ' . $u->character->first_name ?? __('None') }}</td>
+                                    <td>{{ $u->status ? __('Active') : __('Blocked') }}</td>
                                     <td class="text-end">
                                         {!! dred($u, 'username', 'user', 'user', 1, 1, 1, 1) !!}
                                     </td>

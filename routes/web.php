@@ -1,25 +1,24 @@
 <?php
 
 use App\Models\Role;
-use App\Models\User;
-use App\Helpers\Astro;
-use App\Helpers\ATHDateTime;
-use App\Helpers\ATHDateInterval;
-use App\Helpers\Markdown\Markdown;
-use App\Helpers\ATHDateTimeInterval;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BankController;
+use App\Http\Controllers\NewsController;
+use App\Http\Controllers\NatterController;
+use App\Http\Controllers\FrontierController;
 use App\Http\Controllers\Wiki\WikiController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Litted\PostController;
 use App\Http\Controllers\Market\MarketController;
-use App\Http\Controllers\School\CourseController;
-use App\Http\Controllers\School\StudentController;
-use App\Http\Controllers\School\TeacherController;
-use Illuminate\Support\Facades\{Auth, Route, Session};
-use App\Http\Controllers\Admin\Roles\{RoleController, PermissionController};
-use App\Http\Controllers\Litted\{CommunityController, PostCommentController};
-use App\Http\Controllers\{NewsController, NatterController, FrontierController};
+use App\Http\Controllers\Admin\Roles\RoleController;
+use App\Http\Controllers\Admin\Shop\BrandController;
+use App\Http\Controllers\Litted\CommunityController;
+use App\Http\Controllers\Litted\PostCommentController;
+use App\Http\Controllers\Admin\School\CourseController;
+use App\Http\Controllers\Admin\School\StudentController;
+use App\Http\Controllers\Admin\School\TeacherController;
+use App\Http\Controllers\Admin\Roles\PermissionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,10 +32,10 @@ use App\Http\Controllers\{NewsController, NatterController, FrontierController};
 */
 
 Route::get('/test', function () {
-    $pharmacy = Role::create(['name' => 'pharmacy']);
-    $accountant = Role::create(['name' => 'accountant']);
-    $sales = Role::create(['name' => 'sales']);
-    $patient = Role::create(['name' => 'patient']);
+    // $roles = Role::whereNotIn('name', ['admin', 'government', 'staff', 'vendor', 'user'])->with('permissions')->get();
+    // foreach ($roles as $role) {
+    //     dump($role->permissions->pluck('name'));
+    // }
 });
 
 Route::group(['middleware' => ['guest']], function () {

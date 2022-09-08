@@ -9,6 +9,7 @@
     <link href="{{ asset('assets/css/ath-bs5.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/fontawesome.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/custom.css') }}" rel="stylesheet">
+    @include('flatpickr::components.style')
     @role('admin')
         <link href="{{ asset('assets/css/admin.css') }}" rel="stylesheet">
     @endrole
@@ -17,7 +18,9 @@
     <script src="{{ asset('assets/js/jquery-3.6.0.min.js') }}"></script>
     <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('assets/js/fontawesome.min.js') }}"></script>
+    @include('flatpickr::components.script')
     @yield('js')
+
 
     <!-- Favicons -->
     {{-- <link rel="apple-touch-icon" href="/docs/5.2/assets/img/favicons/apple-touch-icon.png" sizes="180x180">

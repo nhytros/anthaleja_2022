@@ -29,6 +29,7 @@ class UserController extends Controller
         return view('admin.users.index', [
             'title' => trans('admin.users.list_by_role', ['role' => $role]),
             'users' => $users,
+            'srole' => $role,
             'roles' => Role::whereNotIn('name', ['admin'])
                 ->orderBy('priority')->orderBy('name')->get(),
         ]);

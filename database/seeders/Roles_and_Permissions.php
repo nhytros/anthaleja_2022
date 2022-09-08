@@ -79,6 +79,9 @@ class Roles_and_Permissions extends Seeder
         ]);
 
         $this->command->getOutput()->writeln("<info>Generating Permissions...</info>");
+        // if ($role->name === 'Admin') {
+        //     $role->syncPermissions(Permission::all());
+        // }
         $admin->givePermissionTo('user');
         $admin->givePermissionTo('character');
         $admin->givePermissionTo('role');
