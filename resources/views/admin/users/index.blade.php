@@ -79,7 +79,7 @@
                         <div class="pe-2">
                             @if ($edit)
                                 <a class="nodec btn btn-sm btn-secondary" href="{{ route('admin.roles') }}">
-                                    <x-fas-arrow-circle-left /> {{ __('Cancel') }}
+                                    {!! getIcon('fas','arrow-circle-left') !!} {{ __('Cancel') }}
                                 </a>
                             @endif
                         </div>
@@ -121,7 +121,7 @@
                             <div class="pe-2">
                                 @if ($edit)
                                     <a class="nodec btn btn-sm btn-secondary" href="{{ route('admin.permissions') }}">
-                                        <x-fas-arrow-circle-left /> {{ __('Cancel') }}
+                                        {!! getIcon('fas','arrow-circle-left') !!} {{ __('Cancel') }}
                                     </a>
                                 @endif
                             </div>

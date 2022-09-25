@@ -4,7 +4,7 @@
         <ul class="list-group">
             <li class="list-group-item m-0 p-0" title="Cash | {{ athel() . ' ' . auth()->user()->character->cash }}">
                 <div class="d-flex">
-                    <x-fas-money-bill class="mt-2 ms-1" />
+                    {!! getIcon('fas', 'money-bill mt-2 ms-1') !!}
                     <div class="p-2 flex-grow-1">
                         {{ toAthel(auth()->user()->character->cash) }}
                     </div>
@@ -13,7 +13,7 @@
             <li class="list-group-item m-0 p-0"
                 title="Bank Account: {{ auth()->user()->character->bank_account }} | {{ athel() . ' ' . auth()->user()->character->bank_amount }}">
                 <div class="d-flex">
-                    <x-fas-money-check class="mt-2 ms-1" />
+                    {!! getIcon('fas', 'money-check mt-2 ms-1') !!}
                     <div class="p-2 flex-grow-1">
                         {{ toAthel(auth()->user()->character->bank_amount) }}
                     </div>
@@ -21,7 +21,7 @@
             </li>
             <li class="list-group-item m-0 p-0" title="Metals">
                 <div class="d-flex">
-                    <x-fas-gem class="mt-2 ms-1" />
+                    {!! getIcon('fas', 'gem mt-2 ms-1') !!}
                     <div class="p-2 flex-grow-1">
                         {{ auth()->user()->character->metals }}
                     </div>

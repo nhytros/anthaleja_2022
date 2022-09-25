@@ -8,7 +8,7 @@
                     <div id="header_actions">
                         @if ($user->can('student.create'))
                             <a href="{{ route('admin.school.student.add') }}" class="btn btn-sm btn-success">
-                                <x-fas-plus /> {{ trans('school.student.add') }}
+                                {!! getIcon('fas', 'plus') !!} {{ trans('school.student.add') }}
                             </a>
                         @endif
                     </div>
@@ -25,7 +25,7 @@
                                         @if ($user->can('create.student'))
                                             <a href="{{ route('admin.school.student.add') }}"
                                                 class="btn btn-sm btn-success">
-                                                <x-fas-plus /> {{ trans('school.student.add') }}
+                                                {!! getIcon('fas', 'plus') !!} {{ trans('school.student.add') }}
                                             </a>
                                         @endif
                                     </div>

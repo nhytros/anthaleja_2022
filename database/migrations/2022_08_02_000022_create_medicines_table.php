@@ -18,8 +18,8 @@ return new class extends Migration
             $table->id();
             $table->string('code')->nullable();
             $table->string('name')->nullable();
-            $table->decimal('price', 10, 2)->nullable()->default(0);
-            $table->decimal('profit', 10, 2)->nullable()->default(0);
+            $table->decimal('price', 12, 2)->nullable()->default(0);
+            $table->decimal('profit', 12, 2)->nullable()->default(0);
             $table->text('description')->nullable();
             $table->integer('available_qty')->nullable()->default(0);
             $table->integer('alert_qty')->nullable()->default(0);

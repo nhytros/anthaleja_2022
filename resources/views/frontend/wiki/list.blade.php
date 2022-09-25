@@ -8,13 +8,13 @@
                     <div id="header_actions">
                         <div class="btn-group">
                             <a href="{{ route('wiki.add') }}" class="btn btn-sm btn-success">
-                                <x-fas-plus /> {{ trans('wiki.page.add') }}
+                                {!! getIcon('fas', 'plus') !!} {{ trans('wiki.page.add') }}
                             </a>
                             <button type="button" class="btn btn-teal dropdown-toggle dropdown-toggle-split"
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 <span class="visually-hidden">Toggle Dropdown</span>
                                 <span>
-                                    <x-fas-filter />
+                                    {!! getIcon('fas', 'filter') !!}
                                 </span>
                             </button>
                             <ul class="dropdown-menu dropdown-menu-end">
@@ -53,23 +53,10 @@
                             <td>
                                 <div class="btn-group" role="group" aria-label="Action Buttons">
                                     <a href="{{ route('wiki.show', $page->slug) }}" class="btn btn-success btn-sm">
-                                        <x-fas-eye />
+                                        {!! getIcon('fas', 'eye') !!}
                                     </a>
                                     @if ($page->character_id == auth()->user()->character->id)
-                                        <a href="{{ route('wiki.edit', $page->id) }}" class="btn btn-primary btn-sm">
-                                            <x-fas-edit />
-                                        </a>
-                                        <a href="{{ route('wiki.delete', $page->id) }}" class="btn btn-warning btn-sm">
-                                            <x-fas-trash />
-                                        </a>
-                                        @if ($page->trashed())
-                                            <a href="{{ route('wiki.restore', $page->id) }}" class="btn btn-orange btn-sm">
-                                                <x-fas-undo />
-                                            </a>
-                                            <a href="{{ route('wiki.destroy', $page->id) }}" class="btn btn-danger btn-sm">
-                                                <x-fas-times />
-                                            </a>
-                                        @endif
+                                        {!! dred($project, 'id', 'wiki', 'page', 1, 1, 1, 1) !!}
                                     @endif
                                     {{-- @IsAdmin
                                     {{ 'destroy' }}

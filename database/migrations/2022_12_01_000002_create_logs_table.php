@@ -15,9 +15,10 @@ return new class extends Migration
     {
         Schema::create('logs', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('character_id');
+            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('character_id')->constrained('characters');
             $table->string('action');
+            $table->ipAddress();
             $table->timestamps();
         });
     }

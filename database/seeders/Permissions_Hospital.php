@@ -16,10 +16,11 @@ class Permissions_Hospital extends Seeder
     public function run()
     {
         // Hospital Permissions
+        $this->command->getOutput()->writeln("<info>*** Hospital Permissions</info>");
         Permission::create(['name' => 'hospital']);
 
         // -- Employees
-        $this->command->getOutput()->writeln("<info>School Employees Permissions...</info>");
+        $this->command->getOutput()->writeln("<info>***** Employees</info>");
         Permission::create(['name' => 'hospital.employee']);
         Permission::create(['name' => 'hospital.employee.create']);
         Permission::create(['name' => 'hospital.employee.edit']);
@@ -29,7 +30,7 @@ class Permissions_Hospital extends Seeder
         Permission::create(['name' => 'hospital.employee.destroy']);
 
         // -- Holidays
-        $this->command->getOutput()->writeln("<info>School Holidays Permissions...</info>");
+        $this->command->getOutput()->writeln("<info>***** Holidays</info>");
         Permission::create(['name' => 'hospital.holiday']);
         Permission::create(['name' => 'hospital.holiday.create']);
         Permission::create(['name' => 'hospital.holiday.edit']);
@@ -39,7 +40,7 @@ class Permissions_Hospital extends Seeder
         Permission::create(['name' => 'hospital.holiday.destroy']);
 
         // -- Leaves
-        $this->command->getOutput()->writeln("<info>School Leaves Permissions...</info>");
+        $this->command->getOutput()->writeln("<info>***** Leaves</info>");
         Permission::create(['name' => 'hospital.leave']);
         Permission::create(['name' => 'hospital.leave.create']);
         Permission::create(['name' => 'hospital.leave.edit']);
@@ -49,7 +50,7 @@ class Permissions_Hospital extends Seeder
         Permission::create(['name' => 'hospital.leave.destroy']);
 
         // -- Events
-        $this->command->getOutput()->writeln("<info>School Events Permissions...</info>");
+        $this->command->getOutput()->writeln("<info>***** Events</info>");
         Permission::create(['name' => 'hospital.event']);
         Permission::create(['name' => 'hospital.event.create']);
         Permission::create(['name' => 'hospital.event.edit']);
@@ -59,7 +60,7 @@ class Permissions_Hospital extends Seeder
         Permission::create(['name' => 'hospital.event.destroy']);
 
         // -- Pharmacy
-        $this->command->getOutput()->writeln("<info>School Pharmacy Permissions...</info>");
+        $this->command->getOutput()->writeln("<info>***** Pharmacies</info>");
         Permission::create(['name' => 'hospital.pharmacy']);
         Permission::create(['name' => 'hospital.pharmacy.create']);
         Permission::create(['name' => 'hospital.pharmacy.edit']);
@@ -69,7 +70,7 @@ class Permissions_Hospital extends Seeder
         Permission::create(['name' => 'hospital.pharmacy.destroy']);
 
         // -- Inventory
-        $this->command->getOutput()->writeln("<info>School Inventory Permissions...</info>");
+        $this->command->getOutput()->writeln("<info>***** Inventory</info>");
         Permission::create(['name' => 'hospital.inventory']);
         Permission::create(['name' => 'hospital.inventory.create']);
         Permission::create(['name' => 'hospital.inventory.edit']);
@@ -79,7 +80,7 @@ class Permissions_Hospital extends Seeder
         Permission::create(['name' => 'hospital.inventory.destroy']);
 
         // -- Stocks
-        $this->command->getOutput()->writeln("<info>School Stocks Permissions...</info>");
+        $this->command->getOutput()->writeln("<info>***** Stocks</info>");
         Permission::create(['name' => 'hospital.stock']);
         Permission::create(['name' => 'hospital.stock.create']);
         Permission::create(['name' => 'hospital.stock.edit']);
@@ -89,7 +90,7 @@ class Permissions_Hospital extends Seeder
         Permission::create(['name' => 'hospital.stock.destroy']);
 
         // -- Invoces
-        $this->command->getOutput()->writeln("<info>School Invoces Permissions...</info>");
+        $this->command->getOutput()->writeln("<info>***** Invoices</info>");
         Permission::create(['name' => 'hospital.invoice']);
         Permission::create(['name' => 'hospital.invoice.create']);
         Permission::create(['name' => 'hospital.invoice.edit']);
@@ -99,7 +100,7 @@ class Permissions_Hospital extends Seeder
         Permission::create(['name' => 'hospital.invoice.destroy']);
 
         // -- Doctors
-        $this->command->getOutput()->writeln("<info>School Doctor Permissions...</info>");
+        $this->command->getOutput()->writeln("<info>***** Doctors</info>");
         Permission::create(['name' => 'hospital.doctor']);
         Permission::create(['name' => 'hospital.doctor.create']);
         Permission::create(['name' => 'hospital.doctor.edit']);
@@ -111,7 +112,7 @@ class Permissions_Hospital extends Seeder
         Permission::create(['name' => 'hospital.doctor.export']);
 
         // -- Nurses
-        $this->command->getOutput()->writeln("<info>School Nurses Permissions...</info>");
+        $this->command->getOutput()->writeln("<info>***** Nurses</info>");
         Permission::create(['name' => 'hospital.nurse']);
         Permission::create(['name' => 'hospital.nurse.create']);
         Permission::create(['name' => 'hospital.nurse.edit']);
@@ -123,7 +124,7 @@ class Permissions_Hospital extends Seeder
         Permission::create(['name' => 'hospital.nurse.export']);
 
         // -- Patients
-        $this->command->getOutput()->writeln("<info>School Patients Permissions...</info>");
+        $this->command->getOutput()->writeln("<info>***** Patients</info>");
         Permission::create(['name' => 'hospital.patient']);
         Permission::create(['name' => 'hospital.patient.create']);
         Permission::create(['name' => 'hospital.patient.edit']);
@@ -135,7 +136,7 @@ class Permissions_Hospital extends Seeder
         Permission::create(['name' => 'hospital.patient.export']);
 
         // -- Medicines
-        $this->command->getOutput()->writeln("<info>School Medicines Permissions...</info>");
+        $this->command->getOutput()->writeln("<info>***** Medicines</info>");
         Permission::create(['name' => 'hospital.medicine']);
         Permission::create(['name' => 'hospital.medicine.create']);
         Permission::create(['name' => 'hospital.medicine.edit']);
@@ -145,7 +146,7 @@ class Permissions_Hospital extends Seeder
         Permission::create(['name' => 'hospital.medicine.destroy']);
 
         // -- Medicines/Categories
-        $this->command->getOutput()->writeln("<info>School Medicines/Categories Permissions...</info>");
+        $this->command->getOutput()->writeln("<info>***** Medicines/Categories</info>");
         Permission::create(['name' => 'hospital.medicine.category']);
         Permission::create(['name' => 'hospital.medicine.category.create']);
         Permission::create(['name' => 'hospital.medicine.category.edit']);
@@ -155,7 +156,7 @@ class Permissions_Hospital extends Seeder
         Permission::create(['name' => 'hospital.medicine.category.destroy']);
 
         // -- Appointments
-        $this->command->getOutput()->writeln("<info>School Appointments Permissions...</info>");
+        $this->command->getOutput()->writeln("<info>***** Appointments</info>");
         Permission::create(['name' => 'hospital.appointment']);
         Permission::create(['name' => 'hospital.appointment.create']);
         Permission::create(['name' => 'hospital.appointment.edit']);
@@ -165,7 +166,7 @@ class Permissions_Hospital extends Seeder
         Permission::create(['name' => 'hospital.appointment.destroy']);
 
         // -- Prescriptions
-        $this->command->getOutput()->writeln("<info>School Prescriptions Permissions...</info>");
+        $this->command->getOutput()->writeln("<info>***** Prescriptions</info>");
         Permission::create(['name' => 'hospital.prescription']);
         Permission::create(['name' => 'hospital.prescription.create']);
         Permission::create(['name' => 'hospital.prescription.edit']);
@@ -175,7 +176,7 @@ class Permissions_Hospital extends Seeder
         Permission::create(['name' => 'hospital.prescription.destroy']);
 
         // -- Beds
-        $this->command->getOutput()->writeln("<info>School Beds Permissions...</info>");
+        $this->command->getOutput()->writeln("<info>***** Beds</info>");
         Permission::create(['name' => 'hospital.bed']);
         Permission::create(['name' => 'hospital.bed.create']);
         Permission::create(['name' => 'hospital.bed.edit']);
@@ -185,7 +186,7 @@ class Permissions_Hospital extends Seeder
         Permission::create(['name' => 'hospital.bed.destroy']);
 
         // -- Treatments
-        $this->command->getOutput()->writeln("<info>School Treatments Permissions...</info>");
+        $this->command->getOutput()->writeln("<info>***** Treatment</info>");
         Permission::create(['name' => 'hospital.treatment']);
         Permission::create(['name' => 'hospital.treatment.create']);
         Permission::create(['name' => 'hospital.treatment.edit']);
@@ -195,7 +196,7 @@ class Permissions_Hospital extends Seeder
         Permission::create(['name' => 'hospital.treatment.destroy']);
 
         // -- Mortuary
-        $this->command->getOutput()->writeln("<info>School Mortuary Permissions...</info>");
+        $this->command->getOutput()->writeln("<info>***** Mortuary</info>");
         Permission::create(['name' => 'hospital.mortuary']);
         Permission::create(['name' => 'hospital.mortuary.create']);
         Permission::create(['name' => 'hospital.mortuary.edit']);
@@ -205,7 +206,7 @@ class Permissions_Hospital extends Seeder
         Permission::create(['name' => 'hospital.mortuary.destroy']);
 
         // -- Blood Bank
-        $this->command->getOutput()->writeln("<info>School Blood Bank Permissions...</info>");
+        $this->command->getOutput()->writeln("<info>***** Blood Bank</info>");
         Permission::create(['name' => 'hospital.bloodbank']);
         Permission::create(['name' => 'hospital.bloodbank.create']);
         Permission::create(['name' => 'hospital.bloodbank.edit']);
@@ -215,7 +216,7 @@ class Permissions_Hospital extends Seeder
         Permission::create(['name' => 'hospital.bloodbank.destroy']);
 
         // -- Child Birth
-        $this->command->getOutput()->writeln("<info>School Child Birth Permissions...</info>");
+        $this->command->getOutput()->writeln("<info>***** Child Birth</info>");
         Permission::create(['name' => 'hospital.childbirth']);
         Permission::create(['name' => 'hospital.childbirth.create']);
         Permission::create(['name' => 'hospital.childbirth.edit']);
@@ -225,7 +226,7 @@ class Permissions_Hospital extends Seeder
         Permission::create(['name' => 'hospital.childbirth.destroy']);
 
         // -- Ambulance
-        $this->command->getOutput()->writeln("<info>School Ambulance Permissions...</info>");
+        $this->command->getOutput()->writeln("<info>***** Ambulance</info>");
         Permission::create(['name' => 'hospital.ambulance']);
         Permission::create(['name' => 'hospital.ambulance.create']);
         Permission::create(['name' => 'hospital.ambulance.edit']);
@@ -235,7 +236,7 @@ class Permissions_Hospital extends Seeder
         Permission::create(['name' => 'hospital.ambulance.destroy']);
 
         // -- Laboratory
-        $this->command->getOutput()->writeln("<info>School Laboratory Permissions...</info>");
+        $this->command->getOutput()->writeln("<info>***** Laboratories</info>");
         Permission::create(['name' => 'hospital.laboratory']);
         Permission::create(['name' => 'hospital.laboratory.create']);
         Permission::create(['name' => 'hospital.laboratory.edit']);
@@ -245,7 +246,7 @@ class Permissions_Hospital extends Seeder
         Permission::create(['name' => 'hospital.laboratory.destroy']);
 
         // -- Specialist
-        $this->command->getOutput()->writeln("<info>School Specialist Permissions...</info>");
+        $this->command->getOutput()->writeln("<info>***** Specialists</info>");
         Permission::create(['name' => 'hospital.specialist']);
         Permission::create(['name' => 'hospital.specialist.create']);
         Permission::create(['name' => 'hospital.specialist.edit']);
@@ -255,7 +256,7 @@ class Permissions_Hospital extends Seeder
         Permission::create(['name' => 'hospital.specialist.destroy']);
 
         // -- Departments
-        $this->command->getOutput()->writeln("<info>School Departments Permissions...</info>");
+        $this->command->getOutput()->writeln("<info>***** Department</info>");
         Permission::create(['name' => 'hospital.department']);
         Permission::create(['name' => 'hospital.department.create']);
         Permission::create(['name' => 'hospital.department.edit']);

@@ -30,7 +30,7 @@ return new class extends Migration
             $table->id();
             $table->integer('room_no')->nullable();
             $table->string('name')->nullable();
-            $table->decimal('price')->nullable()->default(0);
+            $table->decimal('price',12,2)->nullable()->default(0);
             $table->smallInteger('capacity')->nullable()->default(0);
             $table->string('image')->nullable();
             $table->boolean('status')->nullable()->default(0);

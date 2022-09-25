@@ -32,7 +32,7 @@
                     </li>
                 @endhasCharacter
                 <li class="nav-item"><a class="nav-link" href="#">
-                        <x-fas-question-circle>
+                        {!! getIcon('fas', 'question-circle') !!}
                     </a>
                 </li>
             </ul>

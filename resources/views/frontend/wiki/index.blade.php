@@ -15,7 +15,7 @@
                 <a class="nav-link{{ Route::currentRouteName('admin.dashboard') ? ' active' : '' }}" aria-current="page"
                     href="{{ route('admin.dashboard') }}">
                     <span class="align-text-bottom">
-                        <x-fas-cloud /> {{ trans('admin.dashboard') }}
+                        {!! getIcon('fas','cloud') !!} {{ trans('admin.dashboard') }}
                     </span>
                 </a>
             </li> --}}

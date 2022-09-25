@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('bank_transitions', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('character_id');
-            $table->unsignedBigInteger('receiver_id')->nullable();
-            $table->unsignedDecimal('income')->nullable();
-            $table->unsignedDecimal('outcome')->nullable();
+            $table->foreignId('character_id')->constrained('characters');
+            $table->foreignId('receiver_id')->nullable()->constrained('characters');
+            $table->unsignedDecimal('income', 24, 2)->nullable();
+            $table->unsignedDecimal('outcome', 24, 2)->nullable();
             $table->string('description');
             $table->timestamps();
         });

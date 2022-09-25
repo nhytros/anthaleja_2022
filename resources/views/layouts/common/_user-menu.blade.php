@@ -11,8 +11,12 @@
             @role('vendor')
                 <li><a class="dropdown-item" href="#">Vendor dashboard</a></li>
             @endrole
+            <li><a class="dropdown-item"
+                    href="{{ route('profile', Auth::user()->username) }}">{{ trans('auth.user.profile.my') }}</a></li>
             <li>
                 <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="{{ route('frontier.password') }}">{{ trans('frontier.password.change') }}</a>
             </li>
             <li><a class="dropdown-item" href="{{ route('frontier.logout') }}">{{ trans('frontier.leave_city') }}</a></li>
         </ul>

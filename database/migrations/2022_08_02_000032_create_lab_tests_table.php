@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('hospital_lab_tests', function (Blueprint $table) {
             $table->id();
             $table->string('name')->nullable();
-            $table->decimal('price')->nullable()->default(0);
-            $table->decimal('percentage')->nullable()->default(0);
+            $table->decimal('price', 12, 2)->nullable()->default(0);
+            $table->decimal('percentage', 6, 2)->nullable()->default(0);
             $table->boolean('status')->nullable()->default(0);
             $table->foreignId('created_by')->nullable()->constrained('characters')->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('updated_by')->nullable()->constrained('characters')->cascadeOnDelete()->cascadeOnUpdate();

@@ -6,7 +6,7 @@
                 <h4>{!! gravatar($community->slug, 24, 'identicon') !!} {{ config('ath.litted.c_prefix') . $title }}</h4>
                 <div id="header_actions">
                     <a href="{{ route('litted.post.create', $community->slug) }}" class="btn btn-sm btn-success">
-                        <x-fas-plus /> {{ trans('litted.community.post.create') }}
+                        {!! getIcon('fas', 'plus') !!} {{ trans('litted.community.post.create') }}
                     </a>
                 </div>
             </span>

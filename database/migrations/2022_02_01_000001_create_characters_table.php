@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('title')->nullable()->comment('such as Dr., Mr., Mrs., etc.');
             $table->string('first_name', 48);
             $table->string('last_name', 48);
-            $table->string('username', 96);
+            $table->string('username', 96)->unique();
             $table->string('gender', 1);
             $table->unsignedTinyInteger('height')->nullable();
             $table->date('date_of_birth')->nullable();
@@ -34,8 +34,6 @@ return new class extends Migration
             $table->string('phone_no', 8)->nullable();
             // Status: 0=Disabled, 1=Enabled, 2=Archived
             $table->tinyInteger('status')->nullable()->default(1);
-            $table->foreignId('created_by')->nullable()->constrained('characters')->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreignId('updated_by')->nullable()->constrained('characters')->cascadeOnDelete()->cascadeOnUpdate();
             $table->timestamps();
             $table->softDeletes();
         });

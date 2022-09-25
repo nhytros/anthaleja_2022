@@ -21,7 +21,7 @@ $long_max = 2147483647;
 $long_min = (-$long_max - 1);
 
 return [
-    'version' => '0.1.0',
+    'version' => '0.1.1 ',
     'email_suffix' => '@anthaleja.ath',
     'athel_symbol' => chr(234) . chr(156) . chr(178),
     'duni_symbol' => chr(196) . chr(145),

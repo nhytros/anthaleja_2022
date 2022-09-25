@@ -2,47 +2,13 @@
 
 namespace App\Policies;
 
-use App\Models\Litted\Community;
 use App\Models\User;
+use App\Models\Natter\Community;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class CommunityPolicy
 {
     use HandlesAuthorization;
-
-    /**
-     * Determine whether the user can view any models.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function viewAny(User $user)
-    {
-        //
-    }
-
-    /**
-     * Determine whether the user can view the model.
-     *
-     * @param  \App\Models\User  $user
-     * @param  \App\Models\Litted\Community  $community
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function view(User $user, Community $community)
-    {
-        //
-    }
-
-    /**
-     * Determine whether the user can create models.
-     *
-     * @param  \App\Models\User  $user
-     * @return \Illuminate\Auth\Access\Response|bool
-     */
-    public function create(User $user)
-    {
-        //
-    }
 
     /**
      * Determine whether the user can update the model.
@@ -51,6 +17,13 @@ class CommunityPolicy
      * @param  \App\Models\Litted\Community  $community
      * @return \Illuminate\Auth\Access\Response|bool
      */
+
+    public function edit(User $user, Community $community)
+    {
+        dd($user, $community);
+        return $user->character->id === $community->owner_id;
+    }
+
     public function update(User $user, Community $community)
     {
         return $user->character->id === $community->owner_id;

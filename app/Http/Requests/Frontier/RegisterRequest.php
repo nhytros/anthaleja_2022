@@ -35,7 +35,21 @@ class RegisterRequest extends FormRequest
                     ->numbers()
                     ->symbols()
                     ->uncompromised(3)
-            ]
+            ],
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'c_username' => 'required:unique:characters,username',
+            'gender' => 'required',
+            'height' => 'required',
+            'date_of_birth' => 'required',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'username:required' => __('Character username is required'),
+            'username:unique' => __('Character username already taken'),
         ];
     }
 }

@@ -4,7 +4,7 @@
         <ul class="list-group">
             <li class="list-group-item m-0 p-0" title="Energy: {{ auth()->user()->character->energy }}%">
                 <div class="d-flex">
-                    <x-fas-burn class="mt-2 ms-1" />
+                    {!! getIcon('fas', 'burn mt-2 ms-1') !!}
                     <div class="p-2 flex-grow-1">
                         <div class="progress">
                             <div class="progress-bar bg-{{ getStatus('energy')['color'] }}" role="progressbar"
@@ -19,7 +19,7 @@
             </li>
             <li class="list-group-item m-0 p-0" title="Hunger: {{ auth()->user()->character->hunger }}%">
                 <div class="d-flex">
-                    <x-fas-hamburger class="mt-2 ms-1" />
+                    {!! getIcon('fas', 'hamburger mt-2 ms-1') !!}
                     <div class="p-2 flex-grow-1">
                         <div class="progress">
                             <div class="progress-bar bg-{{ getStatus('hunger', 1)['color'] }}" role="progressbar"
@@ -34,7 +34,7 @@
             </li>
             <li class="list-group-item m-0 p-0" title="Thirst: {{ auth()->user()->character->thirst }}%">
                 <div class="d-flex">
-                    <x-fas-beer class="mt-2 ms-1" />
+                    {!! getIcon('fas', 'beer mt-2 ms-1') !!}
                     <div class="p-2 flex-grow-1">
                         <div class="progress">
                             <div class="progress-bar bg-{{ getStatus('thirst', 1)['color'] }}" role="progressbar"

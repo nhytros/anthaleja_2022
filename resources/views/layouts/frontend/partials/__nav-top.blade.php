@@ -4,7 +4,7 @@
         <!-- Toggle button -->
         <button class="navbar-toggler px-0" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarExample1"
             aria-controls="navbarExample1" aria-expanded="false" aria-label="Toggle navigation">
-            <x-fas-bars />
+            {!! getIcon('fas', 'bars') !!}
         </button>
 
         <!-- Collapsible wrapper -->
@@ -33,7 +33,7 @@
                 <li class="nav-item dropdown position-static">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
-                        <x-fas-bars />
+                        {!! getIcon('fas', 'bars') !!}
                     </a>
                     <!-- Dropdown menu -->
                     <div class="dropdown-menu mt-0 dropdown-menu-end" aria-labelledby="navbarDropdown"
@@ -46,19 +46,19 @@
                                 <div class="col-md-6 col-lg-3 mb-3 mb-lg-0">
                                     <div class="list-group list-group-flush fa-2x">
                                         <a href="" class="list-group-item list-group-item-action">
-                                            <x-fas-money-check />
+                                            {!! getIcon('fas','money-check') !!}
                                         </a>
                                         <a href="" class="list-group-item list-group-item-action">
-                                            <x-fas-hamburger />
+                                            {!! getIcon('fas','hamburger') !!}
                                         </a>
                                         <a href="" class="list-group-item list-group-item-action">
-                                            <x-fas-hamburger />
+                                            {!! getIcon('fas','hamburger') !!}
                                         </a>
                                         <a href="" class="list-group-item list-group-item-action">
-                                            <x-fas-hamburger />
+                                            {!! getIcon('fas','hamburger') !!}
                                         </a>
                                         <a href="" class="list-group-item list-group-item-action">
-                                            <x-fas-hamburger />
+                                            {!! getIcon('fas','hamburger') !!}
                                         </a>
                                     </div>
                                 </div>

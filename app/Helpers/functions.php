@@ -166,39 +166,43 @@ function required_field($label)
     return $label . ' <span class="text-danger">*</span>';
 }
 
-function dred($key, $field, $model, $permission_group, $edit = true, $delete = true, $restore = true, $destroy = true)
+function dred($key, $field, $model, $permission_group, $edit = false, $delete = false, $restore = false, $destroy = false)
 {
     $user = auth()->user();
     $output = '';
     $output .= '<div class="btn-group" role="group" aria-label="Action Buttons">';
-    if ($edit && $user->can($permission_group . '.edit')) {
-        $output .= '<a href="' . route('admin.' . $model . '.edit', $key->$field) . '"';
-        $output .= 'class="btn btn-primary btn-sm">';
-        $output .= getIcon('fas', 'edit');
+    // if ($edit && $user->can($permission_group . '.edit')) {
+    // $output .= '<a href="' . route('admin.' . $model . '.edit', $key->$field) . '"';
+    $output .= '<a href="' . route($model . '.edit', $key->$field) . '"';
+    $output .= 'class="btn btn-primary btn-sm">';
+    $output .= getIcon('fas', 'edit');
+    $output .= '</a>';
+    // }
+    // if ($delete && $user->can($permission_group . '.delete')) {
+    // $output .= '<a href="' . route('admin.' . $model . '.delete', $key->$field) . '"';
+    $output .= '<a href="' . route($model . '.delete', $key->$field) . '"';
+    $output .= 'class="btn btn-warning btn-sm">';
+    $output .= getIcon('fas', 'trash');
+    $output .= '</a>';
+    // }
+    // if ($restore && $user->can($permission_group . '.restore')) {
+    if ($key->trashed()) {
+        // $output .= '<a href="' . route('admin.' . $model . '.restore', $key->$field) . '"';
+        $output .= '<a href="' . route($model . '.restore', $key->$field) . '"';
+        $output .= 'class="btn btn-orange btn-sm">';
+        $output .= getIcon('fas', 'undo');
         $output .= '</a>';
     }
-    if ($delete && $user->can($permission_group . '.delete')) {
-        $output .= '<a href="' . route('admin.' . $model . '.delete', $key->$field) . '"';
-        $output .= 'class="btn btn-warning btn-sm">';
-        $output .= getIcon('fas', 'trash');
+    // }
+    // if ($destroy && $user->can($permission_group . '.destroy')) {
+    if ($key->trashed()) {
+        // $output .= '<a href="' . route('admin.' . $model . '.destroy', $key->$field) . '"';
+        $output .= '<a href="' . route($model . '.destroy', $key->$field) . '"';
+        $output .= 'class="btn btn-danger btn-sm">';
+        $output .= getIcon('fas', 'times');
         $output .= '</a>';
     }
-    if ($restore && $user->can($permission_group . '.restore')) {
-        if ($key->trashed()) {
-            $output .= '<a href="' . route('admin.' . $model . '.restore', $key->$field) . '"';
-            $output .= 'class="btn btn-orange btn-sm">';
-            $output .= getIcon('fas', 'undo');
-            $output .= '</a>';
-        }
-    }
-    if ($destroy && $user->can($permission_group . '.destroy')) {
-        if ($key->trashed()) {
-            $output .= '<a href="' . route('admin.' . $model . '.destroy', $key->$field) . '"';
-            $output .= 'class="btn btn-danger btn-sm">';
-            $output .= getIcon('fas', 'times');
-            $output .= '</a>';
-        }
-    }
+    // }
     $output .= '</div>';
     return $output;
 }

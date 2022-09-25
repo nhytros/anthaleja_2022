@@ -11,6 +11,7 @@ use App\Models\Shop\{Shop, Product};
 use Illuminate\Support\Facades\Auth;
 use App\Models\School\{Course, Teacher, Student};
 use App\Http\Controllers\Traits\CreateAndUpdateTable;
+use App\Models\Natter\{Channel, Image, Project, Video};
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\{Model, SoftDeletes};
 
@@ -19,9 +20,10 @@ class Character extends Model
     use HasFactory, SoftDeletes, CreateAndUpdateTable;
 
     protected $fillable = [
-        'bank_account', 'bank_amount', 'cash', 'created_by', 'date_of_birth', 'energy', 'first_name',
-        'gender', 'has_phone', 'height', 'hunger', 'last_name', 'metals', 'phone_no', 'status', 'thirst',
-        'title', 'updated_by', 'user_id', 'username',
+        'user_id', 'title', 'first_name', 'last_name', 'username',
+        'gender', 'height', 'date_of_birth', 'thirst', 'hunger', 'energy',
+        'bank_account', 'cash', 'bank_amount', 'metals', 'has_phone', 'phone_no',
+        'status',
     ];
 
     public function id(): int|false
@@ -37,37 +39,7 @@ class Character extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function wikipages()
-    {
-        return $this->hasMany(Wiki::class, 'character_id', 'page_id');
-    }
-
-    public function shop()
-    {
-        return $this->hasOne(Shop::class);
-    }
-
-    public function items()
-    {
-        return $this->belongsToMany(Product::class, 'character_product')
-            ->withPivot('quantity');
-    }
-
-    public function course()
-    {
-        return $this->belongsToMany(Course::class);
-    }
-
-    public function student()
-    {
-        return $this->hasOne(Student::class);
-    }
-
-    public function teacher()
-    {
-        return $this->hasOne(Teacher::class);
-    }
-
+    // Natter
     public function posts()
     {
         return $this->hasMany(Post::class);
@@ -89,6 +61,51 @@ class Character extends Model
         return $this->belongsToMany(Message::class, 'chat_recipients')
             ->withPivot(['read_at', 'deleted_at']);
     }
+
+    public function channel()
+    {
+        return $this->hasOne(NatterChannel::class);
+    }
+
+    public function projects()
+    {
+        return $this->hasMany(Project::class);
+    }
+
+    // School
+    public function course()
+    {
+        return $this->belongsToMany(Course::class);
+    }
+
+    public function student()
+    {
+        return $this->hasOne(Student::class);
+    }
+
+    public function teacher()
+    {
+        return $this->hasOne(Teacher::class);
+    }
+
+    // Other    
+    public function wikipages()
+    {
+        return $this->hasMany(Wiki::class, 'character_id', 'page_id');
+    }
+
+    public function shop()
+    {
+        return $this->hasOne(Shop::class);
+    }
+
+    public function items()
+    {
+        return $this->belongsToMany(Product::class, 'character_product')
+            ->withPivot('quantity');
+    }
+
+
 
     public function check()
     {
@@ -125,16 +142,6 @@ class Character extends Model
                 'thirst' => $status->thirst -= .25,
             ]);
         }
-    }
-
-    public function createdBy()
-    {
-        return $this->belongsTo(Character::class, 'created_by', 'id');
-    }
-
-    public function updatedBy()
-    {
-        return $this->belongsTo(Character::class, 'updated_by', 'id');
     }
 
     protected function name(): Attribute

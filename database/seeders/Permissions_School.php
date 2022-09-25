@@ -16,9 +16,11 @@ class Permissions_School extends Seeder
     public function run()
     {
         // School Permissions
+        $this->command->getOutput()->writeln("<info>*** School Permissions</info>");
         Permission::create(['name' => 'school']);
 
         // -- Levels
+        $this->command->getOutput()->writeln("<info>***** Levels</info>");
         Permission::create(['name' => 'school.level']);
         Permission::create(['name' => 'school.level.create']);
         Permission::create(['name' => 'school.level.edit']);
@@ -28,6 +30,7 @@ class Permissions_School extends Seeder
         Permission::create(['name' => 'school.level.destroy']);
 
         // -- Courses
+        $this->command->getOutput()->writeln("<info>***** Courses</info>");
         Permission::create(['name' => 'school.course']);
         Permission::create(['name' => 'school.course.create']);
         Permission::create(['name' => 'school.course.edit']);
@@ -37,6 +40,7 @@ class Permissions_School extends Seeder
         Permission::create(['name' => 'school.course.destroy']);
 
         // -- Teachers
+        $this->command->getOutput()->writeln("<info>***** Teachers</info>");
         Permission::create(['name' => 'school.teacher']);
         Permission::create(['name' => 'school.teacher.create']);
         Permission::create(['name' => 'school.teacher.edit']);
@@ -46,6 +50,7 @@ class Permissions_School extends Seeder
         Permission::create(['name' => 'school.teacher.destroy']);
 
         // -- Students
+        $this->command->getOutput()->writeln("<info>***** Students</info>");
         Permission::create(['name' => 'school.student']);
         Permission::create(['name' => 'school.student.create']);
         Permission::create(['name' => 'school.student.edit']);
@@ -55,6 +60,7 @@ class Permissions_School extends Seeder
         Permission::create(['name' => 'school.student.destroy']);
 
         // -- Time (Schedule)
+        $this->command->getOutput()->writeln("<info>***** Time</info>");
         Permission::create(['name' => 'school.time']);
         Permission::create(['name' => 'school.time.create']);
         Permission::create(['name' => 'school.time.edit']);

@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 use Faker\Factory;
+use Illuminate\Support\Str;
+use App\Models\Natter\Channel;
 use App\Models\School\Student;
 use App\Models\School\Teacher;
 use Illuminate\Database\Seeder;
@@ -36,7 +38,7 @@ class Users_and_Characters extends Seeder
             'password' => bcrypt('password', ['rounds' => 12]),
             'status' => true,
         ]);
-        $gov->assignRole('government');
+        $gov->assignRole('governor');
 
         $this->command->getOutput()->writeln("<info>Creating Governor Character...</info>");
         $ch_gov = Character::create([
@@ -54,8 +56,17 @@ class Users_and_Characters extends Seeder
             'has_phone' => true,
             'phone_no' => '649-8767',
         ]);
+        Channel::create([
+            'character_id' => $ch_gov->id,
+            'name' => 'Government Channel',
+            'slug' => 'government-channel',
+            'uid' => $faker->unique()->ean13(),
+            'description' => $faker->paragraphs(2, true),
+            'image_avatar' => $faker->imageUrl(256, 256, null, true, $ch_gov->username, false, 'png'),
+            'image_banner' => $faker->imageUrl(1920, 400, null, true, $ch_gov->username, false, 'png'),
+        ]);
 
-        $nu = rand(25, 100);
+        $nu = 25;
         $this->command->getOutput()->writeln("<info>Generating {$nu} Users...</info>");
         for ($u = 3; $u <= $nu; $u++) {
             $user = User::create([
@@ -107,7 +118,7 @@ class Users_and_Characters extends Seeder
                 'user_id' => $u,
                 'first_name' => $first_name,
                 'last_name' => $last_name = $faker->lastName(),
-                'username' => strtolower($last_name . '.' . $first_name),
+                'username' => $username = strtolower($last_name . '.' . $first_name),
                 'gender' => $gender,
                 'height' => $height,
                 'date_of_birth' => $faker->dateTimeBetween('-50 years', '-18 years'),
@@ -117,6 +128,16 @@ class Users_and_Characters extends Seeder
                 'metals' => 0,
                 'has_phone' => true,
                 'phone_no' => $faker->unique()->numerify('###-####'),
+            ]);
+            $this->command->getOutput()->writeln("<info>Creating Channel for Character #" . $u . "</info>");
+            Channel::create([
+                'character_id' => $c->id,
+                'name' => $name = $username . ' Channel',
+                'description' => 'This is my channel',
+                'uid' => $uid = $faker->unique()->ean13(),
+                'slug' => Str::slug($name),
+                'image_avatar' => $faker->imageUrl(256, 256, null, true, $c->username, false, 'png'),
+                'image_banner' => $faker->imageUrl(1920, 400, null, true, $c->username, false, 'png'),
             ]);
             if ($isStudent) {
                 Student::create([

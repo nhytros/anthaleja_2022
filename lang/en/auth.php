@@ -16,5 +16,7 @@ return [
     'failed' => 'These credentials do not match our records.',
     'password' => 'The provided password is incorrect.',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
+    'user.profile.my' => 'My profile',
+    'user.profile.title' => 'Profile page for :username',
 
 ];
