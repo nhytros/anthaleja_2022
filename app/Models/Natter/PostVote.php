@@ -6,7 +6,7 @@ use App\Models\Character;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\{Model, SoftDeletes};
 
-class Post extends Model
+class PostVote extends Model
 {
     use HasFactory, SoftDeletes;
 

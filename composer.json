@@ -37,7 +37,7 @@
             "Database\\Seeders\\": "database/seeders/"
         },
         "files": [
-            "app/Helpers/ATHDateTime.php",
+            "app/Helpers/ATH/ATHDateTime.php",
             "app/Helpers/functions.php",
             "app/Helpers/timelib.php",
             "app/Helpers/datetime.php",

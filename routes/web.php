@@ -3,20 +3,9 @@
 use App\Models\Role;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\NewsController;
-use App\Http\Controllers\NatterController;
-use App\Http\Controllers\Admin\UserController;
-use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Auth\ProfileController;
 use App\Http\Controllers\Auth\FrontierController;
 use App\Http\Controllers\Auth\CharacterController;
-use App\Http\Controllers\Portfolio\SkillController;
-use App\Http\Controllers\Admin\Roles\RoleController;
-use App\Http\Controllers\Portfolio\ProjectController;
-use App\Http\Controllers\Admin\School\CourseController;
-use App\Http\Controllers\Admin\School\StudentController;
-use App\Http\Controllers\Admin\School\TeacherController;
-use App\Http\Controllers\Admin\Roles\PermissionController;
 
 
 /*
@@ -105,7 +94,9 @@ Route::middleware(['auth', 'permission:school'])->name('admin.')->prefix('admin'
 
 //     }
 // );
+
 Route::get('profile', [ProfileController::class, 'myProfile'])->name('profile');
+Route::get('profile/settings', [ProfileController::class, 'settings'])->name('profile.settings');
 
 // Route::middleware([
 //     'auth:sanctum',

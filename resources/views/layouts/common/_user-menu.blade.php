@@ -16,7 +16,8 @@
             <li>
                 <hr class="dropdown-divider">
             </li>
-            <li><a class="dropdown-item" href="{{ route('frontier.password') }}">{{ trans('frontier.password.change') }}</a>
+            <li><a class="dropdown-item" href="{{ route('profile.settings') }}">{{ __('Settings') }}</a>
+            {{-- <li><a class="dropdown-item" href="{{ route('frontier.password') }}">{{ trans('frontier.password.change') }}</a> --}}
             </li>
             <li><a class="dropdown-item" href="{{ route('frontier.logout') }}">{{ trans('frontier.leave_city') }}</a></li>
         </ul>

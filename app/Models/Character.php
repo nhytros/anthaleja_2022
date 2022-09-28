@@ -7,7 +7,7 @@ use Carbon\Carbon;
 use App\Models\Litted\Post;
 use Illuminate\Support\Str;
 use App\Models\Chat\Conversation;
-use App\Models\Shop\{Shop, Product};
+use App\Models\Market\{Shop, Product};
 use Illuminate\Support\Facades\Auth;
 use App\Models\School\{Course, Teacher, Student};
 use App\Http\Controllers\Traits\CreateAndUpdateTable;

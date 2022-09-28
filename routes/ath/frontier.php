@@ -17,7 +17,6 @@ Route::group(['middleware' => ['guest']], function () {
 
 Route::group(['middleware' => ['auth']], function () {
     // Authentication
-    Route::view('frontier/password', 'frontend.frontier.password', ['title' => trans('frontier.password.change')])->name('frontier.password');
-    Route::post('frontier/postPassword', [FrontierController::class, 'postPassword'])->name('frontier.postPassword');
+    Route::post('profile/postPassword', [ProfileController::class, 'postPassword'])->name('profile.postPassword');
     Route::get('frontier/logout', [FrontierController::class, 'logout'])->name('frontier.logout');
 });

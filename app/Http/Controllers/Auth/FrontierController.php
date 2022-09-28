@@ -97,20 +97,6 @@ class FrontierController extends Controller
         return Redirect::route('frontier.login')->withSuccess('frontier.register_ok');
     }
 
-    public function password()
-    {
-        return view('frontier.password', [
-            'title' => trans('frontier.change_password'),
-        ]);
-    }
-
-    public function postPassword(PasswordRequest $request)
-    {
-        dd($request);
-        User::find(Auth::id())->update(['password' => Hash::make($request->new_password, ['rounds' => 12])]);
-        return Redirect::route('home')->withSuccess('frontier.password.updated_ok');
-    }
-
     public function logout(Request $request)
     {
         $this->middleware(['auth']);
